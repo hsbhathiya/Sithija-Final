@@ -21,11 +21,11 @@ public class AuthServlet extends HttpServlet{
 	@Override
 	  public void doGet(HttpServletRequest req, HttpServletResponse resp)
 	      throws IOException {
-	    if (req.getParameter("testing") == null) {
+	    if (req.getParameter("user") == null) {
 	      resp.setContentType("text/plain");
-	      resp.getWriter().println("Hello, this is a testing servlet. \n\n");
-	      Properties p = System.getProperties();
-	      p.list(resp.getWriter());
+	      resp.getWriter().println("Current user has not been set properly \n\n");
+	      //Properties p = System.getProperties();
+	      //p.list(resp.getWriter());
 
 	    } else {
 	      UserService userService = UserServiceFactory.getUserService();

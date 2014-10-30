@@ -16,10 +16,10 @@
     User user = userService.getCurrentUser();
     if (user != null) {
         pageContext.setAttribute("user", user);
-        pageContext.setAttribute("Message", user.toString());
+        //pageContext.setAttribute("Message", user.toString());
     }
 
-    //response.sendRedirect("/authentication.jsp");
+    response.sendRedirect("/auth");
 %>
 
 
