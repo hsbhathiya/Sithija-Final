@@ -21,24 +21,17 @@ public class AuthServlet extends HttpServlet{
 	@Override
 	  public void doGet(HttpServletRequest req, HttpServletResponse resp)
 	      throws IOException {
-	    if (req.getSession().getAttribute("user") == null) {
-	      resp.setContentType("text/plain");
-	      resp.getWriter().println("Current user has not been set properly \n\n");
-	      //Properties p = System.getProperties();
-	      //p.list(resp.getWriter());
-
-	    } else {
-	      UserService userService = UserServiceFactory.getUserService();
-	      User currentUser = userService.getCurrentUser();
-
-	      if (currentUser != null) {
-	        resp.setContentType("text/plain");
-	        resp.getWriter().println("Welcome to your Sithija Home Page!!, " + currentUser.getNickname());
-	      } else {
-	        resp.sendRedirect(userService.createLoginURL(req.getRequestURI()));
-	      }
+		
+	    UserService userService = UserServiceFactory.getUserService();
+	    User user = userService.getCurrentUser();
+	    if (user != null) {
+	    	//uesr logged in
+	    	req.getSession().setAttribute("user", user);
+	    	resp.sendRedirect("user/index.jsp");
 	    }
-	  }
+	    else{
+	    	//user not logged in
+	    	resp.sendRedirect("/authentication.jsp");
+	    }
 	}
-
-
+}
