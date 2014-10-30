@@ -21,7 +21,7 @@ public class AuthServlet extends HttpServlet{
 	@Override
 	  public void doGet(HttpServletRequest req, HttpServletResponse resp)
 	      throws IOException {
-	    if (req.getParameter("user") == null) {
+	    if (req.getSession().getAttribute("user") == null) {
 	      resp.setContentType("text/plain");
 	      resp.getWriter().println("Current user has not been set properly \n\n");
 	      //Properties p = System.getProperties();
@@ -33,7 +33,7 @@ public class AuthServlet extends HttpServlet{
 
 	      if (currentUser != null) {
 	        resp.setContentType("text/plain");
-	        resp.getWriter().println("grrrr!!, " + currentUser.getNickname());
+	        resp.getWriter().println("Welcome to your Sithija Home Page!!, " + currentUser.getNickname());
 	      } else {
 	        resp.sendRedirect(userService.createLoginURL(req.getRequestURI()));
 	      }

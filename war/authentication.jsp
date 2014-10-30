@@ -15,11 +15,13 @@
     UserService userService = UserServiceFactory.getUserService();
     User user = userService.getCurrentUser();
     if (user != null) {
-        pageContext.setAttribute("user", user);
-        //pageContext.setAttribute("Message", user.toString());
+        //pageContext.setAttribute("user", user);
+        //request.setAttribute("user", user);
+        session.setAttribute("user", user);
+        response.sendRedirect("/auth");
     }
 
-    response.sendRedirect("/auth");
+    
 %>
 
 
@@ -35,15 +37,12 @@
 
 <% if (user != null) 
 	{
-        pageContext.setAttribute("user", user); %>
+        //pageContext.setAttribute("user", user); %>
 	(You can
     <a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">sign out</a>.)</p>
 <% } else { %>
 
 <p>Hello! 
-	<% 
-	//user.nickname 
-	%>
     <a href="<%= userService.createLoginURL(request.getRequestURI()) %>">Sign in</a>
     to include your name with greetings you post.</p>
 <% } %>
