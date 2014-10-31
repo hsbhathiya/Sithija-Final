@@ -22,7 +22,8 @@ public class Document {
 	public Document(String docName, String url, Date timeCreated,
 			Key<SithijaUser> user) {
 		super();
-		this.name = docName +  user;
+		this.id = docName +  user;
+		this.name = docName;
 		this.url = url;
 		this.timeCreated = timeCreated;
 		this.user = user;
