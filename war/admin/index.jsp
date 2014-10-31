@@ -1,14 +1,3 @@
-
-<%
-	if ((boolean) request.getSession().getAttribute("isAdmin").equals(false)) {
-%>
-<%
-	response.sendRedirect("adminLogin.jsp");
-%>
-
-<%
-	} else {
-%>
 <h1>Admin Home Page</h1>
 <button onclick="adminLogout()">Switch to User view</button>
 <br>
@@ -18,14 +7,8 @@
 <p>Functionality to be provided here</p>
 
 
-<%
-	}
-%>
-
 <script>
 	function adminLogout(){	
-		<% request.getSession().setAttribute("isAdmin", false); %>
-
-		<% response.sendRedirect("/user/index.jsp"); %>
+		window.location="/user/index.jsp";
 	}
 </script>

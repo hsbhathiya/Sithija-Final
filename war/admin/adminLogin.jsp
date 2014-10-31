@@ -1,22 +1,22 @@
-<h1>Are you the Admin?</h1>
-<p>Proove it</p>
 
-<form>
-<input type="text" id="adminPass">
-<button onclick="checkAdminLog()">LogIn</button>
-
-</form>
-
-
+<html>
+<head>
 
 <script>
 	function checkAdminLog() {
-
-		//alert(document.getElementById("adminPass").value)
+		
 		if (document.getElementById("adminPass").value == "pass123") {
-			<% request.getSession().setAttribute("isAdmin", true); %>
-			//alert("blah");
-			<% response.sendRedirect("/admin/index.jsp"); %>
+			//alert('test');
+			window.location = "/admin/index.jsp";
 		}
 	}
 </script>
+</head>
+<body>
+	<h1>Are you the Admin?</h1>
+	<p>Proove it</p>
+
+	<input type="text" id="adminPass" value="">
+	<button onClick="checkAdminLog()">LogIn</button>
+</body>
+</html>

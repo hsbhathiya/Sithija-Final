@@ -26,10 +26,7 @@
 	<br>
 	<br>
 	<p>
-		<%
-			request.getSession().setAttribute("isAdmin", false);
-		%>
-		<a href="../admin/index.jsp">admin panel</a>
+		<a href="../admin/adminLogin.jsp">admin panel</a>
 	</p>
 
 	<p>
@@ -57,8 +54,8 @@
 
 <script>
 	function clickedButt(inID) {
-
-		window.location = "/user/driveAppView.jsp?inID=" + inID;
+		var url = "https://docs.google.com/a/wso2.com/presentation/d/1P3f1tPrfHeCkx0FR_oK38WtRGte9VmsWnG4SWGewD5A/edit?usp=drive_web";
+		window.location = "/user/driveAppView.jsp?url=" + url;
 	}
 </script>
 
