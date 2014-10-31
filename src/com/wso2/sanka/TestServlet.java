@@ -61,7 +61,7 @@ public class TestServlet extends HttpServlet {
 		
 		resp.setContentType("text/plain");
 	    resp.getWriter().println("user1" + user1.getEmail()+ " = "+ UserDAO.findByEmail(user1.getEmail()).getEmail());
-	    resp.getWriter().println("user2" + user2.getName()+ "="+ UserDAO.getAllUsers().get(0).getName());
+	    resp.getWriter().println("user2" + user2.getName()+ "="+ UserDAO.getAllUsers().get(1).getName());
 	    //resp.getWriter().println("user3" + user3.+ "-"+ user1.getName());
 		
 	    DocumentDAO.addDocument(document1);
