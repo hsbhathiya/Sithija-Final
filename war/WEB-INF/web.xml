@@ -32,8 +32,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		
 	<welcome-file-list>
 		<welcome-file>auth</welcome-file>
-	</welcome-file-list>
-	
+	</welcome-file-list>	
 		
 	<filter>
         <filter-name>ObjectifyFilter</filter-name>
