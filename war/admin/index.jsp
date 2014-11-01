@@ -3,6 +3,9 @@
 <section class="content">
 
 	<div class="row">
+	<input type="button" id="authorizeButton" style="display: none" value="Authorize" />
+		
+	
 		<!-- Users -->
 
 		<div class="col-md-4" style="margin-left: 20px;">
@@ -120,148 +123,9 @@
 					<!-- /.box-header -->
 					<div class="box-body table-responsive no-padding"
 						style="overflow: hidden;">
-						<table class="table table-hover">
-							<tbody>
-								<tr>
-									<th></th>
-									<th>File Name</th>
-									<th>Last Modified</th>
-									<th>Size</th>
-									<th></th>
-								</tr>
-								<tr>
-									<td><span class="label label-primary"> <i
-											class="glyphicon glyphicon-list"></i>
-									</span></td>
-									<td>Sample Document 1</td>
-									<td>11-7-2014</td>
-									<td>5.14 MB</td>
-									<td><div class="box-tools pull-left">
-											<i class="fa fa-times"></i>
-										</div></td>
-								</tr>
-								<tr>
-									<td><span class="label label-success"> <i
-											class="glyphicon glyphicon-list-alt"></i>
-									</span></td>
-									<td>Sample Sheet 1</td>
-									<td>11-7-2014</td>
-									<td>7 Bytes</td>
-									<td><div class="box-tools pull-left">
-											<i class="fa fa-times"></i>
-										</div></td>
-								</tr>
-								<tr>
-									<td><span class="label label-warning"> <i
-											class="glyphicon glyphicon-credit-card"></i>
-									</span></td>
-									<td>Sample Presentation 1</td>
-									<td>11-7-2014</td>
-									<td>2.12 MB</td>
-									<td><div class="box-tools pull-left">
-											<i class="fa fa-times"></i>
-										</div></td>
-								</tr>
-								<tr>
-									<td><span class="label label-danger"> <i
-											class="glyphicon glyphicon-picture"></i>
-									</span></td>
-									<td>Sample Art 1</td>
-									<td>11-7-2014</td>
-									<td>214 KB</td>
-									<td><div class="box-tools pull-left">
-											<i class="fa fa-times"></i>
-										</div></td>
-								</tr>
-								<td><span class="label label-primary"> <i
-										class="glyphicon glyphicon-list"></i>
-								</span></td>
-								<td>Sample Document 2</td>
-								<td>11-7-2014</td>
-								<td>5.14 MB</td>
-								<td><div class="box-tools pull-left">
-										<i class="fa fa-times"></i>
-									</div></td>
-								</tr>
-								<tr>
-									<td><span class="label label-success"> <i
-											class="glyphicon glyphicon-list-alt"></i>
-									</span></td>
-									<td>Sample Sheet 2</td>
-									<td>11-7-2014</td>
-									<td>7 Bytes</td>
-									<td><div class="box-tools pull-left">
-											<i class="fa fa-times"></i>
-										</div></td>
-								</tr>
-								<tr>
-									<td><span class="label label-warning"> <i
-											class="glyphicon glyphicon-credit-card"></i>
-									</span></td>
-									<td>Sample Presentation 2</td>
-									<td>11-7-2014</td>
-									<td>2.12 MB</td>
-									<td><div class="box-tools pull-left">
-											<i class="fa fa-times"></i>
-										</div></td>
-								</tr>
-								<tr>
-									<td><span class="label label-danger"> <i
-											class="glyphicon glyphicon-picture"></i>
-									</span></td>
-									<td>Sample Art 2</td>
-									<td>11-7-2014</td>
-									<td>214 KB</td>
-									<td><div class="box-tools pull-left">
-											<i class="fa fa-times"></i>
-										</div></td>
-								</tr>
-								<td><span class="label label-primary"> <i
-										class="glyphicon glyphicon-list"></i>
-								</span></td>
-								<td>Sample Document 3</td>
-								<td>11-7-2014</td>
-								<td>5.14 MB</td>
-								<td><div class="box-tools pull-left">
-										<i class="fa fa-times"></i>
-									</div></td>
-								</tr>
-								<tr>
-									<td><span class="label label-success"> <i
-											class="glyphicon glyphicon-list-alt"></i>
-									</span></td>
-									<td>Sample Sheet 3</td>
-									<td>11-7-2014</td>
-									<td>7 Bytes</td>
-									<td><div class="box-tools pull-left">
-											<i class="fa fa-times"></i>
-										</div></td>
-								</tr>
-								<tr>
-									<td><span class="label label-warning"> <i
-											class="glyphicon glyphicon-credit-card"></i>
-									</span></td>
-									<td>Sample Presentation 3</td>
-									<td>11-7-2014</td>
-									<td>2.12 MB</td>
-									<td><div class="box-tools pull-left">
-											<i class="fa fa-times"></i>
-										</div></td>
-								</tr>
-								<tr>
-									<td><span class="label label-danger"> <i
-											class="glyphicon glyphicon-picture"></i>
-									</span></td>
-									<td>Sample Art 3</td>
-									<td>11-7-2014</td>
-									<td>214 KB</td>
-									<td><div class="box-tools pull-left">
-											<i class="fa fa-times"></i>
-										</div></td>
-								</tr>
-							</tbody>
-						</table>
-
+						<!-- LOAD FILES -->
+		<div id="files"></div>
+						
 					</div>
 					<!-- /.box-body -->
 
@@ -287,5 +151,186 @@
 		window.location = "/user/index.jsp";
 	}
 </script>
+
+<script type="text/javascript">
+			var CLIENT_ID = '1035394417482-cmvmigrlonuatrohjm3j18nnnjrrre3e.apps.googleusercontent.com';
+			var SCOPES = 'https://www.googleapis.com/auth/drive';
+			var fileList=new Array();
+			/**
+			 * Called when the client library is loaded to start the auth flow.
+			 */
+			function handleClientLoad() {
+				window.setTimeout(checkAuth, 1);
+			}
+
+			/**
+			 * Check if the current user has authorized the application.
+			 */
+			function checkAuth() {
+				gapi.auth.authorize(
+						{'client_id': CLIENT_ID, 'scope': SCOPES, 'immediate': true},
+						handleAuthResult);
+			}
+
+			/**
+			 * Called when authorization server replies.
+			 *
+			 * @param {Object} authResult Authorization result.
+			 */
+			function handleAuthResult(authResult) {
+				var authButton = document.getElementById('authorizeButton');
+				if (authResult && !authResult.error) {
+					// Access token has been successfully retrieved, requests can be sent to the API.
+					authButton.style.display = 'none';
+					console.log('authenticated');
+					gapi.client.load('drive', 'v2', loadFiles);
+				} else {
+					// No access token could be retrieved, show the button to start the authorization flow.
+					authButton.style.display = 'block';
+					authButton.onclick = function() {
+							gapi.auth.authorize(
+									{'client_id': CLIENT_ID, 'scope': SCOPES, 'immediate': false},
+									handleAuthResult);
+					};
+				}
+			}
+
+			/**
+			 * .
+			 *
+			 * @param {} callback.
+			 */
+			function loadFiles() {
+				var fileDiv = document.getElementById('files');
+				
+				retrieveAllFiles(createFileList, fileDiv);
+			}
+			
+			function retrieveAllFiles(callback, target) {
+				var retrievePageOfFiles = function(request, result) {
+					request.execute(function(resp) {
+						result = result.concat(resp.items);
+						var nextPageToken = resp.nextPageToken;
+						if (nextPageToken) {
+							request = gapi.client.drive.files.list({
+								'pageToken': nextPageToken
+							});
+							retrievePageOfFiles(request, result);
+						} else {
+							callback(result, target);
+						}
+					});
+				}
+				var initialRequest = gapi.client.drive.files.list();
+				retrievePageOfFiles(initialRequest, []);
+			}
+		
+			/**
+			 * .
+			 *
+			 * @param {} callback.
+			 */
+
+
+			function filter(isCreated,type)
+			{
+				x=new Array();
+				j=0;
+				for(i=0;i<fileList.length;i++)
+				{	
+				
+					
+					t=typeChecker(fileList[i].fileExtension,fileList[i].mimeType);  
+					//console.log(t);
+					if((isCreated != fileList[i].shared) && t==type)
+					{
+						console.log(fileList[i].mimeType);
+ 						 x[j++]=fileList[i];					
+					}	
+					else if(type=='all')
+					{
+						console.log(fileList[i].mimeType+" ****BLA");
+						 x[j++]=fileList[i];					
+					}
+					
+				}
+
+				return x;
+			}
+			function createFileList(files, target) {				
+				for(var i in files) {					
+					fileList[i]=files[i];
+				}
+				var newTarget = document.getElementById("files");
+				printFileList(newTarget, fileList);
+			}
+			
+			function printFileList(target, files) {
+				var output = "<table class='table table-hover'>";
+				output += "<tr>";
+				output += "<th></th><th>File Name</th><th>Last Modified</th><th>Size</th><th></th>";
+				output += "</tr>";
+				for(var i in files) {
+					var file = files[i];					
+					var fileSize = (file.fileSize/1024) + " KB";
+					
+					if (isNaN(file.fileSize)){
+						fileSize = '-';
+					}
+					output += "<tr>";
+					output += "<td><img src='" + file.iconLink + "' /\></td>";
+					output += "<td>";
+
+					output +="<a href='/user/driveAppView.jsp?url=" + file.alternateLink + "' target='_blank'>" + file.title + "</a>"
+					output += "</td>";
+					output += "<td>";
+					output += file.modifiedDate;
+					output += "</td>";
+					output += "<td>";
+					output += fileSize;
+					output += "</td>";
+					output += "</tr>";
+				}
+				output += "</table>";
+				console.log(output);
+				target.innerHTML = output;
+			}
+	
+			function doFilter(isCreated,type) // RIDWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN
+			{
+
+				/*
+					types:
+					document
+					spreadsheet
+					presentation
+					drawing
+				*/
+				list=filter(isCreated,type);
+				s="";
+				for(var x in	list){
+					s+=list[x].title+"\n";
+				}	
+							
+			}
+			function typeChecker(extention,mime)
+			{
+				var type="";
+				if(extention==undefined)
+				{
+					type=mime.substr(mime.lastIndexOf('.')+1);
+				}
+				else
+				{
+					type=extention.substr(extention.indexOf('.')+1);
+				}		
+				return type;
+			}
+
+	</script>
+<script type="text/javascript"
+	src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+
+
 
 <%@ include file="../html/footer.jsp"%>

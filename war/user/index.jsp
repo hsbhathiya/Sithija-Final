@@ -8,7 +8,8 @@
 			<div class="row">
 				<!-- small box -->
 				<div class="small-box bg-aqua">
-					<div class="inner">
+				
+					<div class="inner" onclick="seperateFiles('document')">
 						<h3>Doc</h3>
 						<p>Empty Document</p>
 					</div>
@@ -24,7 +25,7 @@
 			<!-- ./col -->
 			<div class="row">
 				<!-- small box -->
-				<div class="small-box bg-green">
+				<div class="small-box bg-green" onclick="seperateFiles('spreadsheet')">
 					<div class="inner">
 						<h3>Sheet</h3>
 						<p>Empty Sheet</p>
@@ -41,7 +42,7 @@
 			<!-- ./col -->
 			<div class="row">
 				<!-- small box -->
-				<div class="small-box bg-yellow">
+				<div class="small-box bg-yellow" onclick="seperateFiles('presentation')">
 					<div class="inner">
 						<h3>Present</h3>
 						<p>Empty Presentation</p>
@@ -58,7 +59,7 @@
 			<!-- ./col -->
 			<div class="row">
 				<!-- small box -->
-				<div class="small-box bg-red">
+				<div class="small-box bg-red" onclick="seperateFiles('drawing')">
 					<div class="inner">
 						<h3>Drawing</h3>
 						<p>Empty Art</p>
@@ -84,152 +85,14 @@
 				<div class="box box-solid box-primary">
 					<div class="box-header">
 						<h1 class="box-title">Files you Own</h1>
+						<div class="pull-right" style="margin-right: 30px; margin-top: 2px"><button id = "showAll" onclick="seperateFiles('all')"class="btn btn-danger">show all</button></div>
+				
 					</div>
 					<!-- /.box-header -->
 					<div class="box-body table-responsive no-padding"
 						style="overflow: hidden; height: 220px;">
-						<table class="table table-hover">
-							<tbody>
-								<tr>
-									<th></th>
-									<th>File Name</th>
-									<th>Last Modified</th>
-									<th>Size</th>
-									<th></th>
-								</tr>
-								<tr>
-									<td><span class="label label-primary"> <i
-											class="glyphicon glyphicon-list"></i>
-									</span></td>
-									<td>Sample Document 1</td>
-									<td>11-7-2014</td>
-									<td>5.14 MB</td>
-									<td><div class="box-tools pull-left">
-											<i class="fa fa-times"></i>
-										</div></td>
-								</tr>
-								<tr>
-									<td><span class="label label-success"> <i
-											class="glyphicon glyphicon-list-alt"></i>
-									</span></td>
-									<td>Sample Sheet 1</td>
-									<td>11-7-2014</td>
-									<td>7 Bytes</td>
-									<td><div class="box-tools pull-left">
-											<i class="fa fa-times"></i>
-										</div></td>
-								</tr>
-								<tr>
-									<td><span class="label label-warning"> <i
-											class="glyphicon glyphicon-credit-card"></i>
-									</span></td>
-									<td>Sample Presentation 1</td>
-									<td>11-7-2014</td>
-									<td>2.12 MB</td>
-									<td><div class="box-tools pull-left">
-											<i class="fa fa-times"></i>
-										</div></td>
-								</tr>
-								<tr>
-									<td><span class="label label-danger"> <i
-											class="glyphicon glyphicon-picture"></i>
-									</span></td>
-									<td>Sample Art 1</td>
-									<td>11-7-2014</td>
-									<td>214 KB</td>
-									<td><div class="box-tools pull-left">
-											<i class="fa fa-times"></i>
-										</div></td>
-								</tr>
-								<td><span class="label label-primary"> <i
-										class="glyphicon glyphicon-list"></i>
-								</span></td>
-								<td>Sample Document 2</td>
-								<td>11-7-2014</td>
-								<td>5.14 MB</td>
-								<td><div class="box-tools pull-left">
-										<i class="fa fa-times"></i>
-									</div></td>
-								</tr>
-								<tr>
-									<td><span class="label label-success"> <i
-											class="glyphicon glyphicon-list-alt"></i>
-									</span></td>
-									<td>Sample Sheet 2</td>
-									<td>11-7-2014</td>
-									<td>7 Bytes</td>
-									<td><div class="box-tools pull-left">
-											<i class="fa fa-times"></i>
-										</div></td>
-								</tr>
-								<tr>
-									<td><span class="label label-warning"> <i
-											class="glyphicon glyphicon-credit-card"></i>
-									</span></td>
-									<td>Sample Presentation 2</td>
-									<td>11-7-2014</td>
-									<td>2.12 MB</td>
-									<td><div class="box-tools pull-left">
-											<i class="fa fa-times"></i>
-										</div></td>
-								</tr>
-								<tr>
-									<td><span class="label label-danger"> <i
-											class="glyphicon glyphicon-picture"></i>
-									</span></td>
-									<td>Sample Art 2</td>
-									<td>11-7-2014</td>
-									<td>214 KB</td>
-									<td><div class="box-tools pull-left">
-											<i class="fa fa-times"></i>
-										</div></td>
-								</tr>
-								<td><span class="label label-primary"> <i
-										class="glyphicon glyphicon-list"></i>
-								</span></td>
-								<td>Sample Document 3</td>
-								<td>11-7-2014</td>
-								<td>5.14 MB</td>
-								<td><div class="box-tools pull-left">
-										<i class="fa fa-times"></i>
-									</div></td>
-								</tr>
-								<tr>
-									<td><span class="label label-success"> <i
-											class="glyphicon glyphicon-list-alt"></i>
-									</span></td>
-									<td>Sample Sheet 3</td>
-									<td>11-7-2014</td>
-									<td>7 Bytes</td>
-									<td><div class="box-tools pull-left">
-											<i class="fa fa-times"></i>
-										</div></td>
-								</tr>
-								<tr>
-									<td><span class="label label-warning"> <i
-											class="glyphicon glyphicon-credit-card"></i>
-									</span></td>
-									<td>Sample Presentation 3</td>
-									<td>11-7-2014</td>
-									<td>2.12 MB</td>
-									<td><div class="box-tools pull-left">
-											<i class="fa fa-times"></i>
-										</div></td>
-								</tr>
-								<tr>
-									<td><span class="label label-danger"> <i
-											class="glyphicon glyphicon-picture"></i>
-									</span></td>
-									<td>Sample Art 3</td>
-									<td>11-7-2014</td>
-									<td>214 KB</td>
-									<td><div class="box-tools pull-left">
-											<i class="fa fa-times"></i>
-										</div></td>
-								</tr>
-							</tbody>
-						</table>
-
+						<div id="ownFiles">
+						</div>
 					</div>
 					<!-- /.box-body -->
 
@@ -243,143 +106,15 @@
 
 
 			<div class="row">
-				<div class="box box-solid box-primary">
+			<div class="box box-solid box-primary">
 					<div class="box-header">
 						<h3 class="box-title">Files shared with you</h3>
 					</div>
 					<!-- /.box-header -->
 					<div class="box-body table-responsive no-padding"
 						style="overflow: hidden; height: 220px;">
-						<table class="table table-hover">
-							<tbody>
-								<tr>
-									<th></th>
-									<th>File Name</th>
-									<th>File Owner</th>
-									<th>Last Modified</th>
-									<th>Size</th>
-
-								</tr>
-								<tr>
-									<td><span class="label label-primary"> <i
-											class="glyphicon glyphicon-list"></i>
-									</span></td>
-									<td>Document 1</td>
-									<td>John Doe</td>
-									<td>11-7-2014</td>
-									<td>5.14 MB</td>
-
-								</tr>
-								<tr>
-									<td><span class="label label-success"> <i
-											class="glyphicon glyphicon-list-alt"></i>
-									</span></td>
-									<td>Sheet 1</td>
-									<td>Jane Doe</td>
-									<td>11-7-2014</td>
-									<td>7 Bytes</td>
-
-								</tr>
-								<tr>
-									<td><span class="label label-warning"> <i
-											class="glyphicon glyphicon-credit-card"></i>
-									</span></td>
-									<td>Presentation 1</td>
-									<td>Bob Doe</td>
-									<td>11-7-2014</td>
-									<td>2.12 MB</td>
-
-								</tr>
-								<tr>
-									<td><span class="label label-danger"> <i
-											class="glyphicon glyphicon-picture"></i>
-									</span></td>
-									<td>Art 1</td>
-									<td>Mike Doe</td>
-									<td>11-7-2014</td>
-									<td>214 KB</td>
-
-								</tr>
-								<td><span class="label label-primary"> <i
-										class="glyphicon glyphicon-list"></i>
-								</span></td>
-								<td>Document 2</td>
-								<td>John Doe</td>
-								<td>11-7-2014</td>
-								<td>5.14 MB</td>
-
-								</tr>
-								<tr>
-									<td><span class="label label-success"> <i
-											class="glyphicon glyphicon-list-alt"></i>
-									</span></td>
-									<td>Sheet 2</td>
-									<td>Jane Doe</td>
-									<td>11-7-2014</td>
-									<td>7 Bytes</td>
-
-								</tr>
-								<tr>
-									<td><span class="label label-warning"> <i
-											class="glyphicon glyphicon-credit-card"></i>
-									</span></td>
-									<td>Presentation 2</td>
-									<td>Bob Doe</td>
-									<td>11-7-2014</td>
-									<td>2.12 MB</td>
-
-								</tr>
-								<tr>
-									<td><span class="label label-danger"> <i
-											class="glyphicon glyphicon-picture"></i>
-									</span></td>
-									<td>Art 2</td>
-									<td>Mike Doe</td>
-									<td>11-7-2014</td>
-									<td>214 KB</td>
-
-								</tr>
-								<td><span class="label label-primary"> <i
-										class="glyphicon glyphicon-list"></i>
-								</span></td>
-								<td>Document 3</td>
-								<td>John Doe</td>
-								<td>11-7-2014</td>
-								<td>5.14 MB</td>
-
-								</tr>
-								<tr>
-									<td><span class="label label-success"> <i
-											class="glyphicon glyphicon-list-alt"></i>
-									</span></td>
-									<td>Sheet 3</td>
-									<td>Jane Doe</td>
-									<td>11-7-2014</td>
-									<td>7 Bytes</td>
-
-								</tr>
-								<tr>
-									<td><span class="label label-warning"> <i
-											class="glyphicon glyphicon-credit-card"></i>
-									</span></td>
-									<td>Presentation 3</td>
-									<td>Bob Doe</td>
-									<td>11-7-2014</td>
-									<td>2.12 MB</td>
-
-								</tr>
-								<tr>
-									<td><span class="label label-danger"> <i
-											class="glyphicon glyphicon-picture"></i>
-									</span></td>
-									<td>Art 3</td>
-									<td>Mike Doe</td>
-									<td>11-7-2014</td>
-									<td>214 KB</td>
-
-								</tr>
-							</tbody>
-						</table>
+					<div id="sharedFiles">
+						</div>
 					</div>
 					<!-- /.box-body -->
 
@@ -529,4 +264,219 @@
 	<!-- /.modal-dialog -->
 </div>
 <!-- /.modal -->
+
+
+<script type="text/javascript">
+			var CLIENT_ID = '1035394417482-cmvmigrlonuatrohjm3j18nnnjrrre3e.apps.googleusercontent.com';
+			var SCOPES = 'https://www.googleapis.com/auth/drive';
+			var fileList=new Array();
+			/**
+			 * Called when the client library is loaded to start the auth flow.
+			 */
+			function handleClientLoad() {
+				window.setTimeout(checkAuth, 1);
+			}
+
+			/**
+			 * Check if the current user has authorized the application.
+			 */
+			function checkAuth() {
+				gapi.auth.authorize(
+						{'client_id': CLIENT_ID, 'scope': SCOPES, 'immediate': true},
+						handleAuthResult);
+			}
+
+			/**
+			 * Called when authorization server replies.
+			 *
+			 * @param {Object} authResult Authorization result.
+			 */
+			function handleAuthResult(authResult) {
+				var authButton = document.getElementById('authorizeButton');
+				if (authResult && !authResult.error) {
+					// Access token has been successfully retrieved, requests can be sent to the API.
+					authButton.style.display = 'none';
+					console.log('authenticated');
+					gapi.client.load('drive', 'v2', loadFiles);
+				} else {
+					// No access token could be retrieved, show the button to start the authorization flow.
+					authButton.style.display = 'block';
+					authButton.onclick = function() {
+							gapi.auth.authorize(
+									{'client_id': CLIENT_ID, 'scope': SCOPES, 'immediate': false},
+									handleAuthResult);
+					};
+				}
+			}
+
+			/**
+			 * .
+			 *
+			 * @param {} callback.
+			 */
+			function loadFiles() {
+				var fileDiv = document.getElementById('files');
+				
+				retrieveAllFiles(createFileList, fileDiv);
+			}
+			
+			function retrieveAllFiles(callback, target) {
+				var retrievePageOfFiles = function(request, result) {
+					request.execute(function(resp) {
+						result = result.concat(resp.items);
+						var nextPageToken = resp.nextPageToken;
+						if (nextPageToken) {
+							request = gapi.client.drive.files.list({
+								'pageToken': nextPageToken
+							});
+							retrievePageOfFiles(request, result);
+						} else {
+							callback(result, target);
+						}
+					});
+				}
+				var initialRequest = gapi.client.drive.files.list();
+				retrievePageOfFiles(initialRequest, []);
+			}
+		
+			/**
+			 * .
+			 *
+			 * @param {} callback.
+			 */
+
+
+			function filter(isCreated,type)
+			{
+				x=new Array();
+				j=0;
+				for(i=0;i<fileList.length;i++)
+				{	
+					if(type=='all')
+					{
+						if((isCreated) && (fileList[i].sharedWithMeDate==undefined))
+						{
+							console.log(fileList[i].mimeType);
+	 						 x[j++]=fileList[i];					
+						}	
+						
+						else if((!isCreated && (fileList[i].sharedWithMeDate!=undefined))){
+							console.log(fileList[i].mimeType+" ****BLA");
+							 x[j++]=fileList[i];
+						}				
+					}
+					
+					else{
+						t=typeChecker(fileList[i].fileExtension,fileList[i].mimeType);  
+						//console.log(t);
+						if((isCreated) && (fileList[i].sharedWithMeDate==undefined) && t==type)
+						{
+							console.log(fileList[i].mimeType);
+	 						 x[j++]=fileList[i];					
+						}	
+						
+						else if((!isCreated)&& (fileList[i].sharedWithMeDate!=undefined) && t==type){
+							console.log(fileList[i].mimeType+" ****BLA");
+							 x[j++]=fileList[i];
+						}
+						
+					}
+					
+					
+					
+				}
+
+				return x;
+			}
+			function createFileList(files, target) {				
+				for(var i in files) {					
+					fileList[i]=files[i];
+				}
+				seperateFiles('all');
+				
+			}
+			function seperateFiles(type){
+				var showButton = document.getElementById('showAll');
+				if (type == 'all'){
+					showButton.style.display = 'none';
+				}
+				
+				else{
+					showButton.style.display = 'block';
+				}
+				var ownedTarget = document.getElementById("ownFiles");
+				var sharedTarget = document.getElementById("sharedFiles");
+				var sharedFiles = filter(false, type);
+				var ownedFiles = filter(true, type);
+				printFileList(ownedTarget, ownedFiles);
+				printFileList(sharedTarget, sharedFiles);
+			}
+			
+			function printFileList(target, files) {
+				var output = "<table class='table table-hover'>";
+				output += "<tr>";
+				output += "<th></th><th>File Name</th><th>Last Modified</th><th>Size</th><th></th>";
+				output += "</tr>";
+				for(var i in files) {
+					var file = files[i];					
+					var fileSize = (file.fileSize/1024) + " KB";
+					
+					if (isNaN(file.fileSize)){
+						fileSize = '-';
+					}
+					output += "<tr>";
+					output += "<td><img src='" + file.iconLink + "' /\></td>";
+					output += "<td>";
+
+					output +="<a href='/user/driveAppView.jsp?url=" + file.alternateLink + "' target='_blank'>" + file.title + "</a>"
+					output += "</td>";
+					output += "<td>";
+					output += file.modifiedDate;
+					output += "</td>";
+					output += "<td>";
+					output += fileSize;
+					output += "</td>";
+					output += "</tr>";
+				}
+				output += "</table>";
+				console.log(output);
+				target.innerHTML = output;
+			}
+	
+			function doFilter(isCreated,type) // RIDWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN
+			{
+
+				/*
+					types:
+					document
+					spreadsheet
+					presentation
+					drawing
+				*/
+				list=filter(isCreated,type);
+				s="";
+				for(var x in	list){
+					s+=list[x].title+"\n";
+				}	
+							
+			}
+			function typeChecker(extention,mime)
+			{
+				var type="";
+				if(extention==undefined)
+				{
+					type=mime.substr(mime.lastIndexOf('.')+1);
+				}
+				else
+				{
+					type=extention.substr(extention.indexOf('.')+1);
+				}		
+				return type;
+			}
+
+	</script>
+<script type="text/javascript"
+	src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+
+
 <%@ include file="../html/footer.jsp"%>
