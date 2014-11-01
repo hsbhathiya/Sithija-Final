@@ -503,13 +503,22 @@
 									
 								</tbody>
 							</table>
-						</div>
+						</div>						
 
 						<p class="help-block">Editors will be allowed to add people
 							and change the permissions.</p>
+							
+							
 					</div>
 
 				</div>
+				
+				<div class="modal-footer clearfix">
+
+                            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Discard</button>
+
+                            <a href="/user/driveAppView.jsp?url=https://docs.google.com/document/d/1vJzoXngfPCEShCwykvwSYQQdUuYZIr8fH7d0jlZUT3U/edit" class="btn btn-primary"><i class="fa fa-plus"></i> Create</a>
+                        </div>
 
 
 			</form>

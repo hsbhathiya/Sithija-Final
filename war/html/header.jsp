@@ -52,10 +52,10 @@
     </head>
 
 
-<body class="skin-blue">
+<body class="skin-blue"  onload="setSRC()">
         <!-- header logo: style can be found in header.less -->
         <header class="header">
-            <a href="index.html" class="logo">
+            <a href="../user/index.jsp" class="logo">
                 <!-- Add the class icon to your logo image or logo icon to add the margining -->
                 <img src="../html/img/logo.png" height="45px" alt="User Image"/>
             </a>
@@ -271,10 +271,11 @@
                                   HashCode hc = hf.newHasher()                                        
                                          .putString(lowerEmail, Charsets.UTF_8)                                        
                                          .hash();
+                                  String photoURL = "http://www.gravatar.com/avatar/" + hc;
                                   %>                                
                                   
                                                                    
-                                    <img src="http://www.gravatar.com/avatar/<%=  hc %>"class="img-circle" alt="User Image" />
+                                    <img src="../html/img/avatar5.png"class="img-circle" alt="User Image" />
                                     <p>
                                         <%=user.getNickname()%> - Web Developer
                                         <small>Member since Nov. 2012</small>
@@ -295,7 +296,7 @@
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                        <a href="/admin/adminLogin.jsp" class="btn btn-default btn-flat">Admin</a>
                                     </div>
                                     <div class="pull-right">
                                         <a href="<%=userService.createLogoutURL("/authentication.jsp")%>" class="btn btn-default btn-flat">Sign out</a>
