@@ -1,0 +1,27 @@
+.scroll {
+	background-color: #fff;
+	padding: 10px 25px;
+}
+.scroll-wrapper {
+	width: 600px;
+	margin: 0 auto;
+}
+.scroll-wrapper {
+	border: 1px solid #ccc;
+	width: 100%;
+	background-color: #fff;
+	height: 400px;
+}
+.scroll-wrapper ::-webkit-scrollbar {
+    width: 12px;
+}
+.scroll-wrapper ::-webkit-scrollbar-track {
+    background-color: #eaeaea;
+    border-left: 1px solid #ccc;
+}
+.scroll-wrapper ::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+}
+.scroll-wrapper ::-webkit-scrollbar-thumb:hover {
+	background-color: #aaa;
+}

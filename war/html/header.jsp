@@ -2,6 +2,10 @@
 <%@ page import="com.google.appengine.api.users.User"%>
 <%@ page import="com.google.appengine.api.users.UserService"%>
 <%@ page import="com.google.appengine.api.users.UserServiceFactory"%>
+<%@ page import="com.google.common.hash.HashCode"%>
+<%@ page import="com.google.common.hash.HashFunction"%>
+<%@ page import="com.google.common.hash.Hashing"%>
+<%@ page import="com.google.common.base.*"%>
 <%
 	UserService userService = UserServiceFactory.getUserService();
 %>
@@ -14,7 +18,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>AdminLTE | Dashboard</title>
+        <title>Sithija | Dashboard</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
@@ -53,7 +57,7 @@
         <header class="header">
             <a href="index.html" class="logo">
                 <!-- Add the class icon to your logo image or logo icon to add the margining -->
-                <img src="../html/img/logo.png" height="50px" alt="User Image"/>
+                <img src="../html/img/logo.png" height="45px" alt="User Image"/>
             </a>
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top" role="navigation">
@@ -257,7 +261,20 @@
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header bg-light-blue">
-                                    <img src="../html/img/avatar3.png" class="img-circle" alt="User Image" />
+                               
+                                  <%
+                                  String email = "MyEmailAddress@example.com ";
+                                  String trimmedEmail = email.trim();
+                                  String lowerEmail = email.toLowerCase();
+                                  
+                                  HashFunction hf = Hashing.md5();
+                                  HashCode hc = hf.newHasher()                                        
+                                         .putString(lowerEmail, Charsets.UTF_8)                                        
+                                         .hash();
+                                  %>                                
+                                  
+                                                                   
+                                    <img src="http://www.gravatar.com/avatar/<%=  hc %>"class="img-circle" alt="User Image" />
                                     <p>
                                         <%=user.getNickname()%> - Web Developer
                                         <small>Member since Nov. 2012</small>
