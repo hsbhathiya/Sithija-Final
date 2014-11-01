@@ -49,10 +49,23 @@
         <link type="text/css" rel="stylesheet" href="/stylesheets/main.css"/>
         -->
         
+        <script type="text/javascript">
+        var photoURL;
+		function setPhoto() {
+			$.getJSON("https://www.googleapis.com/plus/v1/people/<%=user.getUserId()%>?fields=image&key=AIzaSyAseQnLgdcf-DnZRciUSxk-Oxrou05goyo", function(data) {
+			    //console.log(data); // use data as a generic object 
+			    photoURL = data['image']['url'];
+			    //console.log(photoURL);
+			    document.getElementById("userPhoto").src = photoURL; 
+			    
+			});
+		}
+	</script>
+        
     </head>
 
 
-<body class="skin-blue"  onload="setSRC()">
+<body class="skin-blue"  onload="setPhoto()">
         <!-- header logo: style can be found in header.less -->
         <header class="header">
             <a href="../user/index.jsp" class="logo">
@@ -261,21 +274,10 @@
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header bg-light-blue">
-                               
-                                  <%
-                                  String email = "MyEmailAddress@example.com ";
-                                  String trimmedEmail = email.trim();
-                                  String lowerEmail = email.toLowerCase();
-                                  
-                                  HashFunction hf = Hashing.md5();
-                                  HashCode hc = hf.newHasher()                                        
-                                         .putString(lowerEmail, Charsets.UTF_8)                                        
-                                         .hash();
-                                  String photoURL = "http://www.gravatar.com/avatar/" + hc;
-                                  %>                                
+                                       
                                   
                                                                    
-                                    <img src="../html/img/avatar5.png"class="img-circle" alt="User Image" />
+                                    <img id='userPhoto' src=""class="img-circle" alt="User Image" />
                                     <p>
                                         <%=user.getNickname()%> - Web Developer
                                         <small>Member since Nov. 2012</small>
