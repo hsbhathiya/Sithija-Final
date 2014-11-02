@@ -17,7 +17,8 @@
 				<!-- /.box-header -->
 				<div class="box-body table-responsive no-padding"
 					style="overflow: hidden;">
-					<button class="btn btn-success pull-right" style="margin-top:10px; margin-bottom:10px;margin-right:20px;">Create User</button>
+					<button class="btn btn-success pull-right" data-toggle="modal"
+						data-target="#compose-modal" style="margin-top:10px; margin-bottom:10px;margin-right:20px;">Create User</button>
 					<br>
 					<h3 style="margin-left:10px;">List of Users</h3>
 					<br>
@@ -25,10 +26,10 @@
 							<tbody>
 									<tr >
 									<td width="10%"></td>
-									<td><img src="../html/img/avatar.png" height="40px" class="img-circle" alt="User Image"/>
+									<td><img src="../html/img/sanka.jpg" width="40x" height="40px" class="img-circle" alt="User Image"/>
                                                 </td>										
 										
-										<td class="name"><a href="#">John Doe</a></td>
+										<td class="name"><a href="#"> Sanka Rasnayaka</a></td>
 										<td><div class="btn-group">
                                             <button type="button" class="btn btn-info">Delete</button>
                                             <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
@@ -46,10 +47,10 @@
 									</tr>
 									<tr class="unread">
 									<td width="10%"></td>
-									<td><img src="../html/img/avatar2.png" height="40px" class="img-circle" alt="User Image"/>
+									<td><img src="../html/img/ridwan.jpg" width="40x"  height="40px" class="img-circle" alt="User Image"/>
                                                 </td>										
 										
-										<td class="name"><a href="#">John Doe</a></td>
+										<td class="name"><a href="#">Ridwan Shariffdeen</a></td>
 										<td><div class="btn-group">
                                             <button type="button" class="btn btn-info">Delete</button>
                                             <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
@@ -65,10 +66,10 @@
 									</tr>
 									<tr class="unread">
 									<td width="10%"></td>
-									<td><img src="../html/img/avatar3.png" height="40px" class="img-circle" alt="User Image"/>
+									<td><img src="../html/img/tharindu.jpg" width="40x" height="40px" class="img-circle" alt="User Image"/>
                                                 </td>										
 										
-										<td class="name"><a href="#">John Doe</a></td>
+										<td class="name"><a href="#">Tharindu Munasinghe</a></td>
 										<td><div class="btn-group">
                                             <button type="button" class="btn btn-info">Delete</button>
                                             <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
@@ -85,10 +86,10 @@
 									</tr>
 									<tr class="unread">
 									<td width="10%"></td>
-									<td><img src="../html/img/avatar.png" height="40px" class="img-circle" alt="User Image"/>
+									<td><img src="../html/img/bhathiya.jpg" height="40px" class="img-circle" alt="User Image"/>
                                                 </td>										
 										
-										<td class="name"><a href="#">John Doe</a></td>
+										<td class="name"><a href="#">Bhathiya Supun</a></td>
 										<td><div class="btn-group">
                                             <button type="button" class="btn btn-info">Delete</button>
                                             <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
@@ -143,7 +144,51 @@
 
 </section>
 
+<!-- Create New User Modal -->
 
+<div class="modal fade" id="compose-modal" tabindex="-1" role="dialog"
+	aria-hidden="true" style="display: none;">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true">
+					<i class="fa fa-times"></i>
+				</button>
+				<h4 class="modal-title">
+					<i class="fa fa-user"></i> Create New User
+				</h4>
+			</div>
+			<form action="#" method="post">
+				<div class="modal-body">
+					<div class="form-group has-success">
+						User Name <br> <br> <input type="text"
+							class="form-control" id="inputSuccess" placeholder="Enter ...">
+					</div>
+			
+					<div class="form-group has-success">
+						User Email <br> <br> <input type="text"
+							class="form-control" type="email" id="inputSuccess" placeholder="Enter ...">
+					</div>
+					
+				</div>
+				
+				<div class="modal-footer clearfix">
+
+                            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Discard</button>
+
+                            <a href="/user/driveAppView.jsp?url=https://docs.google.com/document/d/1vJzoXngfPCEShCwykvwSYQQdUuYZIr8fH7d0jlZUT3U/edit" class="btn btn-primary" ><i class="fa fa-plus"></i> Create</a>
+                        </div>
+
+
+			</form>
+
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
 
 
 <script>

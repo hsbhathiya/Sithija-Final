@@ -150,7 +150,7 @@
 					<i class="fa fa-times"></i>
 				</button>
 				<h4 class="modal-title">
-					<i class="fa fa-envelope-o"></i> Create New Message
+					<i class="fa fa-file-o"></i> Create New File
 				</h4>
 			</div>
 			<form action="#" method="post">
@@ -168,10 +168,10 @@
 							<table class="table">
 								<tbody>
 									<tr >
-									<td><img src="../html/img/avatar.png" height="40px" class="img-circle" alt="User Image"/>
+									<td><img src="../html/img/sanka.jpg" width="40x" height="40px" class="img-circle" alt="User Image"/>
                                                 </td>										
 										
-										<td class="name"><a href="#">John Doe</a></td>
+										<td class="name"><a href="#"> Sanka Rasnayaka</a></td>
 										<td><div class="btn-group">
                                             <button type="button" class="btn btn-info">Can View</button>
                                             <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
@@ -187,45 +187,87 @@
                                             </ul>
                                         </div></td>
 										<td class="small-col">
-												<input type="checkbox"
+												<input type="checkbox" 
 													style="position: absolute; opacity: 0;">
 												<ins class="iCheck-helper"
 													style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins>
 											</td>
 									</tr>
 									<tr class="unread">
-									<td><img src="../html/img/avatar2.png" height="40px" class="img-circle" alt="User Image"/>
+									<td><img src="../html/img/ridwan.jpg" width="40x" height="40px" class="img-circle" alt="User Image"/>
                                                 </td>										
 										
-										<td class="name"><a href="#">John Doe</a></td>
+										<td class="name"><a href="#"> Ridwan Shariffdeen</a></td>
+										<td><div class="btn-group">
+                                            <button type="button" class="btn btn-info">Can View</button>
+                                            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+                                                <span class="caret"></span>
+                                                <span class="sr-only">Toggle Dropdown</span>
+                                            </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li><a href="#">Action</a></li>
+                                                <li><a href="#">Another action</a></li>
+                                                <li><a href="#">Something else here</a></li>
+                                                <li class="divider"></li>
+                                                <li><a href="#">Separated link</a></li>
+                                            </ul>
+                                        </div></td>
 										<td class="small-col"><div class="icheckbox_minimal-blue"
 												aria-checked="false" aria-disabled="false"
 												style="position: relative;">
-												<input type="checkbox"
+												<input type="checkbox" 
 													style="position: absolute; opacity: 0;">
 												<ins class="iCheck-helper"
 													style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins>
 											</div></td>
 									</tr>
 									<tr class="unread">
-									<td><img src="../html/img/avatar3.png" height="40px" class="img-circle" alt="User Image"/>
+									<td><img src="../html/img/tharindu.jpg" width="40x" height="40px" class="img-circle" alt="User Image"/>
                                                 </td>										
 										
-										<td class="name"><a href="#">John Doe</a></td>
+										<td class="name"><a href="#"> Tharindu Munasinghe</a></td>
+										<td><div class="btn-group">
+                                            <button type="button" class="btn btn-info">Can View</button>
+                                            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+                                                <span class="caret"></span>
+                                                <span class="sr-only">Toggle Dropdown</span>
+                                            </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li><a href="#">Action</a></li>
+                                                <li><a href="#">Another action</a></li>
+                                                <li><a href="#">Something else here</a></li>
+                                                <li class="divider"></li>
+                                                <li><a href="#">Separated link</a></li>
+                                            </ul>
+                                        </div></td>
 										<td class="small-col"><div class="icheckbox_minimal-blue"
 												aria-checked="false" aria-disabled="false"
 												style="position: relative;">
-												<input type="checkbox"
+												<input type="checkbox" 
 													style="position: absolute; opacity: 0;">
 												<ins class="iCheck-helper"
 													style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins>
 											</div></td>
 									</tr>
 									<tr class="unread">
-									<td><img src="../html/img/avatar.png" height="40px" class="img-circle" alt="User Image"/>
+									<td><img src="../html/img/bhathiya.jpg" width="40x"  height="40px" class="img-circle" alt="User Image"/>
                                                 </td>										
 										
-										<td class="name"><a href="#">John Doe</a></td>
+										<td class="name"><a href="#"> Bhathiya Supun</a></td>
+										<td><div class="btn-group">
+                                            <button type="button" class="btn btn-info">Can View</button>
+                                            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+                                                <span class="caret"></span>
+                                                <span class="sr-only">Toggle Dropdown</span>
+                                            </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li><a href="#">Action</a></li>
+                                                <li><a href="#">Another action</a></li>
+                                                <li><a href="#">Something else here</a></li>
+                                                <li class="divider"></li>
+                                                <li><a href="#">Separated link</a></li>
+                                            </ul>
+                                        </div></td>
 										<td class="small-col"><div class="icheckbox_minimal-blue"
 												aria-checked="false" aria-disabled="false"
 												style="position: relative;">
@@ -238,7 +280,8 @@
 									
 								</tbody>
 							</table>
-						</div>						
+						
+							</div>						
 
 						<p class="help-block">Editors will be allowed to add people
 							and change the permissions.</p>
@@ -252,7 +295,7 @@
 
                             <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Discard</button>
 
-                            <a href="/user/driveAppView.jsp?url=https://docs.google.com/document/d/1vJzoXngfPCEShCwykvwSYQQdUuYZIr8fH7d0jlZUT3U/edit" class="btn btn-primary"><i class="fa fa-plus"></i> Create</a>
+                            <a href="/user/driveAppView.jsp?url=https://docs.google.com/document/d/19vVoApKkRmOkGfzKsentl8OR2Nyxp3iaW1a1V59eVDM/edit" class="btn btn-primary"><i class="fa fa-plus"></i> Create</a>
                         </div>
 
 
