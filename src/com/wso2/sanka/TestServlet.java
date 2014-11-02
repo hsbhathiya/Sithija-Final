@@ -16,7 +16,6 @@ import com.sithija.bizdrive.dao.UserDAO;
 import static com.sithija.bizdrive.service.OfyService.factory;;
 
 public class TestServlet extends HttpServlet {
-
 	/**
 	 * 
 	 */
@@ -62,16 +61,22 @@ public class TestServlet extends HttpServlet {
 		resp.setContentType("text/plain");
 	    resp.getWriter().println("user1" + user1.getEmail()+ " = "+ UserDAO.findByEmail(user1.getEmail()).getEmail());
 	    resp.getWriter().println("user2" + user2.getName()+ "="+ UserDAO.getAllUsers().get(1).getName());
+	    
 	    //resp.getWriter().println("user3" + user3.+ "-"+ user1.getName());
 		
 	    DocumentDAO.addDocument(document1);
 		DocumentDAO.addDocument(document2);
-		DocumentDAO.addDocument(document3);		
+		DocumentDAO.addDocument(document3);	
+		
+		for (SithijaUser user: UserDAO.getAllUsers()){
+			resp.getWriter().println( user.getName()+ " , "+ user.getEmail());			
+		}
+		
+		for (Document d: DocumentDAO.getAllDocuments()){
+			resp.getWriter().println((d.getUser().getString()));
+			resp.getWriter().println( UserDAO.findByEmail(d.getUser().getString()));		
+		}
+		
     
 	  }
 	}
-	
-	
-	
-
-
