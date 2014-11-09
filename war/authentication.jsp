@@ -27,7 +27,7 @@
             <br>
             <br>
             <div style= "align:center;margin-top:20px;margin-bottom:20px;">
-            <a href ="<%= userService.createLoginURL("/user/index.jsp") %>">
+            <a href ="<%= userService.createLoginURL("/") %>">
             <button class="btn bg-olive btn-block">Sign Me In</button>
             </a>
             </div>
