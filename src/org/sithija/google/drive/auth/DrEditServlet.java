@@ -197,12 +197,17 @@ public abstract class DrEditServlet extends HttpServlet {
 				// prompted to select
 				// if(!profiles.isEmpty()){
 				Profile profile = ProfileApi.getProfile(email, "WSO2");
-				Company company = CompanyApi.getComapany(profile.getCompany());
+				Company company = CompanyApi.getComapany("WSO2");
 				credentialManager.save(company, new GoogleCredential()
 						.setAccessToken(credential.getAccessToken())
 						.setRefreshToken(credential.getRefreshToken()));
-				req.getSession().setAttribute("profileId",
-						profile.getProfileId());
+				
+				if(profile !=null ){
+					req.getSession().setAttribute("profileId",
+							profile.getProfileId());
+					
+				}
+
 				req.getSession().setAttribute("company", company);
 				resp.sendRedirect("/");
 				// }
