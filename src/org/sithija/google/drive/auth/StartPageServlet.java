@@ -26,14 +26,14 @@ public class StartPageServlet extends DrEditServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException, ServletException {
 		
-	//	req.getSession().setAttribute("company",CompanyApi.getComapany("WSO2"));
+
 		// handle OAuth2 callback
 		handleCallbackIfRequired(req, resp);
 		// Making sure that we have user credentials
 		loginIfRequired(req, resp);
 		// Deserialize the state in order to specify some values to the DrEdit
 		// JavaScript client below.
-	/*	String stateParam = req.getParameter("state");
+		String stateParam = req.getParameter("state");
 		if (stateParam != null) {
 			State state = new State(stateParam);
 			if (state.ids != null && state.ids.size() > 0) {
@@ -43,7 +43,8 @@ public class StartPageServlet extends DrEditServlet {
 				resp.sendRedirect("/#/create/" + state.folderId);
 				return;
 			}
-		}*/
+		}
+		
 		req.getRequestDispatcher("/about").forward(req, resp);
 	}
 }

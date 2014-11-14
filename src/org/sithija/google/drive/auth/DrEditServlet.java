@@ -8,6 +8,7 @@ import java.io.InputStreamReader;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
+import javax.management.RuntimeErrorException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -32,6 +33,9 @@ import com.google.api.server.spi.response.UnauthorizedException;
 import com.google.api.services.drive.Drive;
 import com.google.api.services.oauth2.Oauth2;
 import com.google.api.services.oauth2.model.Userinfoplus;
+import com.google.appengine.api.users.User;
+import com.google.appengine.api.users.UserService;
+import com.google.appengine.api.users.UserServiceFactory;
 import com.google.gson.Gson;
 
 /**
@@ -157,8 +161,11 @@ public abstract class DrEditServlet extends HttpServlet {
 	 */
 	protected void loginIfRequired(HttpServletRequest req,
 			HttpServletResponse resp) throws IOException {
+
+		// Company com = CompanyApi.getComapany("ABC");
 		GoogleCredential credential = getCredential(req, resp);
-		if (credential == null) {
+		if (credential == null || credential.getRefreshToken() == null
+				|| credential.getAccessToken() == null) {
 			// redirect to authorization url
 			try {
 				resp.sendRedirect(credentialManager.getAuthorizationUrl());
@@ -189,35 +196,41 @@ public abstract class DrEditServlet extends HttpServlet {
 			try {
 				Userinfoplus about = service.userinfo().get().execute();
 				String email = about.getEmail();
-				req.getSession()
-						.setAttribute(KEY_SESSION_USERID, about.getId());
-				req.getSession().setAttribute("company",CompanyApi.getComapany("WSO2"));
+				
+				Company abc = new Company("ABC");// CompanyApi.getComapany("ABC");
+				Company xyz = new Company("XYZ");
+				req.getSession().setAttribute("company", abc);
+				credentialManager.save(abc, credential.getAccessToken(),
+						credential.getRefreshToken());
+				credentialManager.save(xyz, credential.getAccessToken(),
+						credential.getRefreshToken());
+				resp.sendRedirect("/");
+				/*
+				 * req.getSession() .setAttribute(KEY_SESSION_USERID,
+				 * about.getId());
+				 */
+				// req.getSession().setAttribute("company",new Company("ABC"));
+
 				// List<Profile> profiles =
 				// ProfileApi.getProfilesByEmail(email);//User should be
 				// prompted to select
 				// if(!profiles.isEmpty()){
-				Profile profile = ProfileApi.getProfile(email, "WSO2");
-				Company company = CompanyApi.getComapany("WSO2");
-				credentialManager.save(company, new GoogleCredential()
-						.setAccessToken(credential.getAccessToken())
-						.setRefreshToken(credential.getRefreshToken()));
-				
-				if(profile !=null ){
-					req.getSession().setAttribute("profileId",
-							profile.getProfileId());
-					
-				}
+				// Profile profile = ProfileApi.getProfile(email, "WSO2");
+				/*
+				 * if (profile != null) {
+				 * req.getSession().setAttribute("profileId",
+				 * profile.getProfileId()); }
+				 */
 
-				req.getSession().setAttribute("company", company);
-				resp.sendRedirect("/");
+				// req.getSession().setAttribute("company", company);
 				// }
 			} catch (IOException e) {
 				throw new RuntimeException("Can't handle the OAuth2 callback, "
 						+ "make sure that code is valid.");
 			}
-			
+
 		}
-			
+
 	}
 
 	/**
@@ -233,9 +246,17 @@ public abstract class DrEditServlet extends HttpServlet {
 	 */
 	protected GoogleCredential getCredential(HttpServletRequest req,
 			HttpServletResponse resp) throws IOException {
-		
+
 		Company company = (Company) req.getSession().getAttribute("company");
-		//String scope = (String) req.getSession().getAttribute("full");
+		if (company != null) {
+			return credentialManager.get(company);
+		}
+		return null;
+	}
+
+	protected GoogleCredential getCredential(Company company)
+			throws IOException {
+
 		if (company != null) {
 			return credentialManager.get(company);
 		}

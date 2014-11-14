@@ -91,7 +91,7 @@ public class CredentialManager {
 	 * 
 	 * @return An empty credential object.
 	 */
-	public Credential buildEmpty() {
+	public GoogleCredential buildEmpty() {
 		return new GoogleCredential.Builder()
 				.setClientSecrets(this.clientSecrets).setTransport(transport)
 				.setJsonFactory(jsonFactory).build();
@@ -105,11 +105,16 @@ public class CredentialManager {
 	 * @return A credential object or null.
 	 * @throws IOException
 	 */
-	public GoogleCredential get(Company compnay)
-			throws IOException {
-		/*return (GoogleCredential) dataStoreFactory.getDataStore(
-				compnay.getCompanyName());// compnay.getCredential();*/
-		return new GoogleCredential().setAccessToken(compnay.getAccessToken()).setAccessToken(compnay.getRefreshToken());
+	public GoogleCredential get(Company compnay) throws IOException {
+
+		Company datastoreCompany = CompanyApi.getComapany(compnay
+				.getCompanyName());
+		if (datastoreCompany != null) {
+			return buildEmpty().setAccessToken(
+					datastoreCompany.getAccessToken()).setRefreshToken(
+					datastoreCompany.getRefreshToken());
+		}
+		return null;
 	}
 
 	/**
@@ -120,11 +125,13 @@ public class CredentialManager {
 	 * @param credential
 	 *            A GoogleCredential object to save.
 	 */
-	public void save(Company company, GoogleCredential credential) {
+	public void save(Company company, String accessToken, String refreshToekn) {
 		// dataStoreFactory.getDataStore(company.getCompanyName()).set(key,
 		// value)
-		company.setAccessToken(credential.getAccessToken());
-		company.setRefreshToken(credential.getRefreshToken());
+		company.setAccessToken(accessToken);
+		if (refreshToekn != null) {
+			company.setRefreshToken(refreshToekn);
+		}
 		CompanyApi.saveCompany(company);
 	}
 
@@ -165,12 +172,16 @@ public class CredentialManager {
 		try {
 			GoogleTokenResponse response = new GoogleAuthorizationCodeTokenRequest(
 					transport, jsonFactory, clientSecrets.getWeb()
-							.getClientId(), clientSecrets.getWeb().getClientSecret(), 
-							 code, clientSecrets.getWeb().getRedirectUris().get(0)).execute();
-			Credential credential = buildEmpty().setAccessToken(response.getAccessToken());
+							.getClientId(), clientSecrets.getWeb()
+							.getClientSecret(), code, clientSecrets.getWeb()
+							.getRedirectUris().get(0)).execute();
+			Credential credential = buildEmpty().setAccessToken(
+					response.getAccessToken()).setRefreshToken(
+					response.getRefreshToken());
 
-			//GoogleCredential GoogleCredential = new GoogleCredential(credential);
-			//return GoogleCredential;
+			// GoogleCredential GoogleCredential = new
+			// GoogleCredential(credential);
+			// return GoogleCredential;
 			return credential;
 		} catch (IOException e) {
 			new RuntimeException(
@@ -179,31 +190,25 @@ public class CredentialManager {
 		return null;
 
 	}
-	
-	 /*public GoogleAuthorizationCodeFlow getFlow() throws IOException {
-		    if (flow == null) {
-		      HttpTransport httpTransport = new NetHttpTransport();
-		      JacksonFactory jsonFactory = new JacksonFactory();
-		      flow =
-		          new GoogleAuthorizationCodeFlow.Builder(httpTransport, jsonFactory, clientSecrets, SCOPES)
-		              .setAccessType("offline").setApprovalPrompt("force").build();
-		    }
-		    return flow;
-		  }*/
-	 
-	/*  public Credential exchangeCode(String authorizationCode)
-		      throws Exception {
-		    try {
-		      GoogleAuthorizationCodeFlow flow = this.getFlow();
-		      GoogleTokenResponse response =
-		          flow.newTokenRequest(authorizationCode).setRedirectUri( clientSecrets.getWeb()
-							.getRedirectUris().get(0)).execute();
-		      return flow.createAndStoreCredential(response, null);
-		    } catch (IOException e) {
-		      System.err.println("An error occurred: " + e);
-		      throw new Exception();
-		    }*/
 
+	/*
+	 * public GoogleAuthorizationCodeFlow getFlow() throws IOException { if
+	 * (flow == null) { HttpTransport httpTransport = new NetHttpTransport();
+	 * JacksonFactory jsonFactory = new JacksonFactory(); flow = new
+	 * GoogleAuthorizationCodeFlow.Builder(httpTransport, jsonFactory,
+	 * clientSecrets, SCOPES)
+	 * .setAccessType("offline").setApprovalPrompt("force").build(); } return
+	 * flow; }
+	 */
 
+	/*
+	 * public Credential exchangeCode(String authorizationCode) throws Exception
+	 * { try { GoogleAuthorizationCodeFlow flow = this.getFlow();
+	 * GoogleTokenResponse response =
+	 * flow.newTokenRequest(authorizationCode).setRedirectUri(
+	 * clientSecrets.getWeb() .getRedirectUris().get(0)).execute(); return
+	 * flow.createAndStoreCredential(response, null); } catch (IOException e) {
+	 * System.err.println("An error occurred: " + e); throw new Exception(); }
+	 */
 
 }
