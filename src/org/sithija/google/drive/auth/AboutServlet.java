@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.sithija.google.drive.datastore.operations.CompanyApi;
 
+import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
 import com.google.api.client.googleapis.json.GoogleJsonResponseException;
 import com.google.api.services.drive.Drive;
 import com.google.api.services.drive.model.About;
@@ -21,8 +22,14 @@ public class AboutServlet extends DrEditServlet {
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
-		Drive service = getDriveService(getCredential(req, resp));
-		try {
+		Drive service = getDriveService(new GoogleCredential().setAccessToken(CompanyApi.getComapany("WSO2").getAccessToken()));
+		if(service != null){
+			About about = service.about().get().execute();
+			resp.setContentType("text/html");
+			resp.getWriter().println(about.getName());
+			
+		}
+	/*	try {
 			About about = service.about().get().execute();
 			sendJson(resp, about);
 		} catch (GoogleJsonResponseException e) {
@@ -33,6 +40,6 @@ public class AboutServlet extends DrEditServlet {
 				deleteCredential(req, resp);
 				sendGoogleJsonResponseError(resp, e);
 			}
-		}
+		}*/
 	}
 }

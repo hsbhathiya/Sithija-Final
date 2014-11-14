@@ -45,11 +45,6 @@ public class CredentialManager {
 	 * Global instance of the {@link DataStoreFactory}. The best practice is to
 	 * make it a single globally shared instance across your application.
 	 */
-
-	private static AppEngineDataStoreFactory dataStoreFactory;
-
-	private static GoogleAuthorizationCodeFlow flow = null;
-
 	/**
 	 * Transport layer for OAuth2 client.
 	 */

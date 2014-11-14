@@ -33,7 +33,7 @@ public class StartPageServlet extends DrEditServlet {
 		loginIfRequired(req, resp);
 		// Deserialize the state in order to specify some values to the DrEdit
 		// JavaScript client below.
-		String stateParam = req.getParameter("state");
+	/*	String stateParam = req.getParameter("state");
 		if (stateParam != null) {
 			State state = new State(stateParam);
 			if (state.ids != null && state.ids.size() > 0) {
@@ -43,7 +43,7 @@ public class StartPageServlet extends DrEditServlet {
 				resp.sendRedirect("/#/create/" + state.folderId);
 				return;
 			}
-		}
-		req.getRequestDispatcher("/auth").forward(req, resp);
+		}*/
+		req.getRequestDispatcher("/about").forward(req, resp);
 	}
 }
