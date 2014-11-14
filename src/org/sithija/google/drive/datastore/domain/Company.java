@@ -1,9 +1,9 @@
 package org.sithija.google.drive.datastore.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.api.client.auth.oauth2.Credential;
 import com.google.appengine.api.datastore.Blob;
 import com.googlecode.objectify.Key;
 import com.googlecode.objectify.annotation.Cache;
@@ -12,8 +12,12 @@ import com.googlecode.objectify.annotation.Id;
 
 @Cache
 @Entity
-public class Company {
+public class Company implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	private String companyName;
 	private String accessToken;
@@ -21,7 +25,7 @@ public class Company {
 	private Blob image;//image may be a separate entity 
 	private List<Key<Profile>> employee = new ArrayList<Key<Profile>>();
 	private Key<Profile> managerProfile; // Generate Admin profile;
-	private Credential credential;
+	//private GoogleCredential credential;
 
 	protected Company() {
 	}
@@ -55,19 +59,19 @@ public class Company {
 		this.companyName = companyName;
 	}
 
-	public String getToken() {
+	public String getAccessToken() {
 		return accessToken;
 	}
 
-	public void setToken(String token) {
+	public void setAccessToken(String token) {
 		this.accessToken = token;
 	}
 
-	public String getTokenSecret() {
+	public String getRefreshToken() {
 		return refreshToken;
 	}
 
-	public void setTokenSecret(String tokenSecret) {
+	public void setRefreshToken(String tokenSecret) {
 		this.refreshToken = tokenSecret;
 	}
 
@@ -102,11 +106,12 @@ public class Company {
 		return managerProfile;
 	}
 	
-	public void setCredential(Credential credential) {
+	/*public void setCredential(GoogleCredential credential) {
 		this.credential = credential;
 	}
 	
-	public Credential getCredential() {
+	public GoogleCredential getCredential() {
 		return credential;
-	}
+	}*/
+
 }

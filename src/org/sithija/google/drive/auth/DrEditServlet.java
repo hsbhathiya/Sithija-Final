@@ -20,7 +20,9 @@ import org.sithija.google.drive.datastore.operations.CompanyApi;
 import org.sithija.google.drive.datastore.operations.ProfileApi;
 
 import com.google.api.client.auth.oauth2.Credential;
+import com.google.api.client.auth.oauth2.StoredCredential;
 import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
+import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
 import com.google.api.client.googleapis.json.GoogleJsonResponseException;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.http.javanet.NetHttpTransport;
@@ -35,18 +37,15 @@ import com.google.gson.Gson;
 /**
  * Abstract servlet that sets up credentials and provides some convenience
  * methods.
- * 
- * @author vicfryzel@google.com (Vic Fryzel)
- * @author jbd@google.com (Burcu Dogan)
  */
 @SuppressWarnings("serial")
 public abstract class DrEditServlet extends HttpServlet {
 	static {
-        factory().register(Profile.class);
-        factory().register(Document.class);    
-        factory().register(Company.class);
-    }
-	
+		factory().register(Profile.class);
+		factory().register(Document.class);
+		factory().register(Company.class);
+	}
+
 	/**
 	 * Default transportation layer for Google Apis Java client.
 	 */
@@ -154,10 +153,11 @@ public abstract class DrEditServlet extends HttpServlet {
 	 *            Request object.
 	 * @param resp
 	 *            Response object.
+	 * @throws IOException
 	 */
 	protected void loginIfRequired(HttpServletRequest req,
-			HttpServletResponse resp) {
-		Credential credential = getCredential(req, resp);
+			HttpServletResponse resp) throws IOException {
+		GoogleCredential credential = getCredential(req, resp);
 		if (credential == null) {
 			// redirect to authorization url
 			try {
@@ -188,23 +188,31 @@ public abstract class DrEditServlet extends HttpServlet {
 			Oauth2 service = getOauth2Service(credential);
 			try {
 				Userinfoplus about = service.userinfo().get().execute();
-				String email= about.getEmail();
-				req.getSession().setAttribute(KEY_SESSION_USERID, about.getId());
-			//	List<Profile> profiles = ProfileApi.getProfilesByEmail(email);//User should be prompted to select 
-			//	if(!profiles.isEmpty()){
-					Profile profile = ProfileApi.getProfile(email, "WSO2");
-					Company company = CompanyApi.getComapany(profile.getCompany());
-					credentialManager.save(company, credential);					
-					req.getSession().setAttribute("profileId", profile.getProfileId());
-					req.getSession().setAttribute("company", company);
-					resp.sendRedirect("/about");					
-			//	}
+				String email = about.getEmail();
+				req.getSession()
+						.setAttribute(KEY_SESSION_USERID, about.getId());
+				req.getSession().setAttribute("company",CompanyApi.getComapany("WSO2"));
+				// List<Profile> profiles =
+				// ProfileApi.getProfilesByEmail(email);//User should be
+				// prompted to select
+				// if(!profiles.isEmpty()){
+				Profile profile = ProfileApi.getProfile(email, "WSO2");
+				Company company = CompanyApi.getComapany(profile.getCompany());
+				credentialManager.save(company, new GoogleCredential()
+						.setAccessToken(credential.getAccessToken())
+						.setRefreshToken(credential.getRefreshToken()));
+				req.getSession().setAttribute("profileId",
+						profile.getProfileId());
+				req.getSession().setAttribute("company", company);
+				resp.sendRedirect("/");
+				// }
 			} catch (IOException e) {
 				throw new RuntimeException("Can't handle the OAuth2 callback, "
 						+ "make sure that code is valid.");
 			}
-			resp.sendRedirect("/public/index");
+			
 		}
+			
 	}
 
 	/**
@@ -216,11 +224,13 @@ public abstract class DrEditServlet extends HttpServlet {
 	 * @param resp
 	 *            Response object.
 	 * @return Credential object of the user in session or null.
+	 * @throws IOException
 	 */
-	protected Credential getCredential(HttpServletRequest req,
-			HttpServletResponse resp) {
-		Company company = (Company) req.getSession().getAttribute(
-				"company");
+	protected GoogleCredential getCredential(HttpServletRequest req,
+			HttpServletResponse resp) throws IOException {
+		
+		Company company = (Company) req.getSession().getAttribute("company");
+		//String scope = (String) req.getSession().getAttribute("full");
 		if (company != null) {
 			return credentialManager.get(company);
 		}
@@ -238,8 +248,7 @@ public abstract class DrEditServlet extends HttpServlet {
 	 */
 	protected void deleteCredential(HttpServletRequest req,
 			HttpServletResponse resp) {
-		Company company = (Company) req.getSession().getAttribute(
-				"company");
+		Company company = (Company) req.getSession().getAttribute("company");
 		if (company != null) {
 			credentialManager.delete(company);
 			req.getSession().removeAttribute("company");

@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.sithija.google.drive.auth.model.State;
+import org.sithija.google.drive.datastore.operations.CompanyApi;
 
 /**
  * Servlet to check that the current user is authorized and to serve the start
@@ -24,6 +25,8 @@ public class StartPageServlet extends DrEditServlet {
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException, ServletException {
+		
+	//	req.getSession().setAttribute("company",CompanyApi.getComapany("WSO2"));
 		// handle OAuth2 callback
 		handleCallbackIfRequired(req, resp);
 		// Making sure that we have user credentials
@@ -41,6 +44,6 @@ public class StartPageServlet extends DrEditServlet {
 				return;
 			}
 		}
-		req.getRequestDispatcher("/public/index.html").forward(req, resp);
+		req.getRequestDispatcher("/auth").forward(req, resp);
 	}
 }

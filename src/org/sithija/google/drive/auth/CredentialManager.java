@@ -12,30 +12,44 @@ import org.sithija.google.drive.datastore.domain.Profile;
 import org.sithija.google.drive.datastore.operations.CompanyApi;
 
 import com.google.api.client.auth.oauth2.Credential;
+
+import com.google.api.client.extensions.appengine.datastore.AppEngineDataStoreFactory;
+import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeRequestUrl;
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeTokenRequest;
 import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
 import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
 import com.google.api.client.googleapis.auth.oauth2.GoogleTokenResponse;
 import com.google.api.client.http.HttpTransport;
+import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.JsonFactory;
+import com.google.api.client.json.jackson2.JacksonFactory;
+import com.google.api.client.util.store.DataStoreFactory;
 
 /**
  * Credential manager to get, save, delete user credentials.
- * 
- * @author jbd@google.com (Burcu Dogan)
  */
 public class CredentialManager {
-	
+
 	static {
-        factory().register(Profile.class);
-        factory().register(Document.class);   
-        factory().register(Company.class);
-    }
+		factory().register(Profile.class);
+		factory().register(Document.class);
+		factory().register(Company.class);
+	}
 	/**
 	 * Client secrets object.
 	 */
 	private GoogleClientSecrets clientSecrets;
+
+	/**
+	 * Global instance of the {@link DataStoreFactory}. The best practice is to
+	 * make it a single globally shared instance across your application.
+	 */
+
+	private static AppEngineDataStoreFactory dataStoreFactory;
+
+	private static GoogleAuthorizationCodeFlow flow = null;
+
 	/**
 	 * Transport layer for OAuth2 client.
 	 */
@@ -53,10 +67,12 @@ public class CredentialManager {
 			// Required to identify the user in our data store.
 			"https://www.googleapis.com/auth/userinfo.email",
 			"https://www.googleapis.com/auth/userinfo.profile");
+
 	/**
 	 * Credential store to get, save, delete user credentials.
 	 */
-	//private static AppEngineCredentialStore credentialStore = new AppEngineCredentialStore();
+	// private static AppEngineCredentialStore credentialStore = new
+	// AppEngineCredentialStore();
 
 	/**
 	 * Credential Manager constructor.
@@ -92,32 +108,40 @@ public class CredentialManager {
 	 * @param userId
 	 *            The id of the user.
 	 * @return A credential object or null.
+	 * @throws IOException
 	 */
-	public Credential get(Company compnay) {
-		return compnay.getCredential();
+	public GoogleCredential get(Company compnay)
+			throws IOException {
+		/*return (GoogleCredential) dataStoreFactory.getDataStore(
+				compnay.getCompanyName());// compnay.getCredential();*/
+		return new GoogleCredential().setAccessToken(compnay.getAccessToken()).setAccessToken(compnay.getRefreshToken());
 	}
 
 	/**
-	 * Saves credentials of the given user.
+	 * Saves credentials of a given company.
 	 * 
-	 * @param userId
-	 *            The id of the user.
+	 * @param comapny
+	 * 
 	 * @param credential
-	 *            A credential object to save.
+	 *            A GoogleCredential object to save.
 	 */
-	public void save(Company company, Credential credential) {
-		company.setCredential(credential);
+	public void save(Company company, GoogleCredential credential) {
+		// dataStoreFactory.getDataStore(company.getCompanyName()).set(key,
+		// value)
+		company.setAccessToken(credential.getAccessToken());
+		company.setRefreshToken(credential.getRefreshToken());
 		CompanyApi.saveCompany(company);
 	}
 
 	/**
-	 * Deletes credentials of the given user.
+	 * Deletes GoogleCredential of the given company.
 	 * 
-	 * @param userId
+	 * @param company
 	 *            The id of the user.
 	 */
 	public void delete(Company company) {
-		company.setCredential(null);
+		company.setAccessToken(null);
+		company.setRefreshToken(null);
 		CompanyApi.saveCompany(company);
 	}
 
@@ -146,14 +170,45 @@ public class CredentialManager {
 		try {
 			GoogleTokenResponse response = new GoogleAuthorizationCodeTokenRequest(
 					transport, jsonFactory, clientSecrets.getWeb()
-							.getClientId(), clientSecrets.getWeb()
-							.getClientSecret(), code, clientSecrets.getWeb()
-							.getRedirectUris().get(0)).execute();
-			return buildEmpty().setAccessToken(response.getAccessToken());
+							.getClientId(), clientSecrets.getWeb().getClientSecret(), 
+							 code, clientSecrets.getWeb().getRedirectUris().get(0)).execute();
+			Credential credential = buildEmpty().setAccessToken(response.getAccessToken());
+
+			//GoogleCredential GoogleCredential = new GoogleCredential(credential);
+			//return GoogleCredential;
+			return credential;
 		} catch (IOException e) {
 			new RuntimeException(
 					"An unknown problem occured while retrieving token");
 		}
 		return null;
+
 	}
+	
+	 /*public GoogleAuthorizationCodeFlow getFlow() throws IOException {
+		    if (flow == null) {
+		      HttpTransport httpTransport = new NetHttpTransport();
+		      JacksonFactory jsonFactory = new JacksonFactory();
+		      flow =
+		          new GoogleAuthorizationCodeFlow.Builder(httpTransport, jsonFactory, clientSecrets, SCOPES)
+		              .setAccessType("offline").setApprovalPrompt("force").build();
+		    }
+		    return flow;
+		  }*/
+	 
+	/*  public Credential exchangeCode(String authorizationCode)
+		      throws Exception {
+		    try {
+		      GoogleAuthorizationCodeFlow flow = this.getFlow();
+		      GoogleTokenResponse response =
+		          flow.newTokenRequest(authorizationCode).setRedirectUri( clientSecrets.getWeb()
+							.getRedirectUris().get(0)).execute();
+		      return flow.createAndStoreCredential(response, null);
+		    } catch (IOException e) {
+		      System.err.println("An error occurred: " + e);
+		      throw new Exception();
+		    }*/
+
+
+
 }
