@@ -11,10 +11,6 @@ import org.sithija.google.drive.datastore.operations.CompanyApi;
 /**
  * Servlet to check that the current user is authorized and to serve the start
  * page for DrEdit.
- * 
- * @author vicfryzel@google.com (Vic Fryzel)
- * @author nivco@google.com (Nicolas Garnier)
- * @author jbd@google.com (Burcu Dogan)
  */
 @SuppressWarnings("serial")
 public class StartPageServlet extends DrEditServlet {
