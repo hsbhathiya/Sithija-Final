@@ -10,7 +10,7 @@ public class CompanyApi {
 		ofy().save().entity(company).now();
 	}
 	
-	public static Company getComapany(String companyName) {
+	public static Company getCompany(String companyName) {
 		return ofy().load().type(Company.class).id(companyName).now();
 	}
 		

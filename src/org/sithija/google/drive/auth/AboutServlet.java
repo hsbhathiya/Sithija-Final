@@ -24,28 +24,30 @@ public class AboutServlet extends DrEditServlet {
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
-		
-	Company wso2 = CompanyApi.getComapany("XYZ");//(Company)req.getSession().getAttribute("company");
-	req.getSession().setAttribute("company", wso2);
-	Drive service = getDriveService(getCredential(req,resp));
-		if(service != null){
-			About about = service.about().get().execute();
-			resp.setContentType("text/html");
-			resp.getWriter().println(about.getName());
-			service.files().insert(new File().setDescription("abc").setTitle(about.getName())).execute();
-			
-		}
-	/*	try {
-			About about = service.about().get().execute();
-			sendJson(resp, about);
-		} catch (GoogleJsonResponseException e) {
-			if (e.getStatusCode() == 401) {
-				// The user has revoked our token or it is otherwise bad.
-				// Delete the local copy so that their next page load will
-				// recover.
-				deleteCredential(req, resp);
-				sendGoogleJsonResponseError(resp, e);
+
+		Company company = (Company) req.getSession().getAttribute("company"); // CompanyApi.getCompany("XYZ");//
+																				// new
+																				// Company("ABC");
+		// req.getSession().setAttribute("company", company);
+
+		if (company != null) {
+			Drive service = getDriveService(getCredential(req, resp));
+			if (service != null) {
+				About about = service.about().get().execute();
+				resp.setContentType("text/html");
+				resp.getWriter().println(about.getName());
+				service.files()
+						.insert(new File().setDescription("abc").setTitle(
+								about.getName())).execute();
 			}
-		}*/
+			/*
+			 * try { About about = service.about().get().execute();
+			 * sendJson(resp, about); } catch (GoogleJsonResponseException e) {
+			 * if (e.getStatusCode() == 401) { // The user has revoked our token
+			 * or it is otherwise bad. // Delete the local copy so that their
+			 * next page load will // recover. deleteCredential(req, resp);
+			 * sendGoogleJsonResponseError(resp, e); } }
+			 */
+		}
 	}
 }

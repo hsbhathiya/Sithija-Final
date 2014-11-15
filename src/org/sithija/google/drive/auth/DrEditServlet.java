@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Date;
 import java.util.List;
 
 import javax.management.RuntimeErrorException;
@@ -71,10 +72,12 @@ public abstract class DrEditServlet extends HttpServlet {
 	 * Path component under war/ to locate client_secrets.json file.
 	 */
 	public static final String CLIENT_SECRETS_FILE_PATH = "/WEB-INF/client_secrets.json";
+	private static final long EXPIRATION_THRESHOLD = 10;
 	/**
 	 * A credential manager to get, set, delete credential objects.
 	 */
 	private CredentialManager credentialManager = null;
+	private GoogleClientSecrets clientSecrets;
 
 	/**
 	 * Initializes the Servlet.
@@ -164,12 +167,27 @@ public abstract class DrEditServlet extends HttpServlet {
 
 		// Company com = CompanyApi.getComapany("ABC");
 		GoogleCredential credential = getCredential(req, resp);
+		
 		if (credential == null || credential.getRefreshToken() == null
 				|| credential.getAccessToken() == null) {
-			// redirect to authorization url
+			// missing authorization; redirect to authorization url
 			try {
 				resp.sendRedirect(credentialManager.getAuthorizationUrl());
 			} catch (IOException e) {
+				throw new RuntimeException("Can't redirect to auth page");
+			}
+		}
+		else if(credential != null 
+				&& credential.getExpirationTimeMilliseconds() != null 
+				&& credential.getExpirationTimeMilliseconds() < new Date().getTime() + EXPIRATION_THRESHOLD) {
+			// expired; refresh the token
+			try {
+				credential = new GoogleCredential.Builder()
+			    .setClientSecrets(getClientSecrets().get("client_id").toString(), 
+			    		getClientSecrets().get("client_secret").toString())
+			    .setJsonFactory(JSON_FACTORY).setTransport(TRANSPORT).build()
+			    .setRefreshToken("<REFRESH_TOKEN>").setAccessToken("<ACCESS_TOKEN>");
+			} catch (Exception e) {
 				throw new RuntimeException("Can't redirect to auth page");
 			}
 		}
@@ -313,14 +331,18 @@ public abstract class DrEditServlet extends HttpServlet {
 	 * @return A GoogleClientsSecrets object.
 	 */
 	private GoogleClientSecrets getClientSecrets() {
-		// TODO: do not read on each request
-		InputStream stream = getServletContext().getResourceAsStream(
-				CLIENT_SECRETS_FILE_PATH);
-		try {
-			return GoogleClientSecrets.load(JSON_FACTORY,
-					new InputStreamReader(stream));
-		} catch (IOException e) {
-			throw new RuntimeException("No client_secrets.json found");
+		// load from file only if not initialized yet
+		if(this.clientSecrets == null) {
+			InputStream stream = getServletContext().getResourceAsStream(
+					CLIENT_SECRETS_FILE_PATH);
+			try {
+				this.clientSecrets = GoogleClientSecrets.load(JSON_FACTORY,
+						new InputStreamReader(stream));
+			} catch (IOException e) {
+				throw new RuntimeException("No client_secrets.json found");
+			}
 		}
+
+		return this.clientSecrets;
 	}
 }

@@ -22,6 +22,7 @@ public class Company implements Serializable {
 	private String companyName;
 	private String accessToken;
 	private String refreshToken;
+	private Long expirationTime;
 	private Blob image;//image may be a separate entity 
 	private List<Key<Profile>> employee = new ArrayList<Key<Profile>>();
 	private Key<Profile> managerProfile; // Generate Admin profile;
@@ -34,14 +35,16 @@ public class Company implements Serializable {
 		this.companyName = companyName;
 	}
 
-	public Company(String companyName, String token, String tokenSecret) {
+	public Company(String companyName, String token, String tokenSecret, Long expirationTime) {
 		this.companyName = companyName;
 		this.accessToken = token;
 		this.refreshToken = tokenSecret;
+		this.expirationTime = expirationTime;
 	}
 	
 
-	public Company(String companyName, String token, String tokenSecret,Profile admin, Blob image) {
+	public Company(String companyName, String token, String tokenSecret,Profile admin, Long expirationTime, 
+			Blob image) {
 		Key<Profile> adminKey = Key.create(admin);
 		
 		this.companyName = companyName;
@@ -49,6 +52,7 @@ public class Company implements Serializable {
 		this.refreshToken = tokenSecret;
 		this.image = image;
 		this.managerProfile = adminKey;
+		this.expirationTime = expirationTime;
 	}
 
 	public String getCompanyName() {
@@ -73,6 +77,14 @@ public class Company implements Serializable {
 
 	public void setRefreshToken(String tokenSecret) {
 		this.refreshToken = tokenSecret;
+	}
+
+	public Long getExpirationTime() {
+		return expirationTime;
+	}
+
+	public void setExpirationTime(Long expirationTime) {
+		this.expirationTime = expirationTime;
 	}
 
 	public void setImage(byte[] bytes) {

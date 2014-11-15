@@ -105,14 +105,15 @@ public class CredentialManager {
 	 * @return A credential object or null.
 	 * @throws IOException
 	 */
-	public GoogleCredential get(Company compnay) throws IOException {
+	public GoogleCredential get(Company company) throws IOException {
 
-		Company datastoreCompany = CompanyApi.getComapany(compnay
+		Company datastoreCompany = CompanyApi.getCompany(company
 				.getCompanyName());
 		if (datastoreCompany != null) {
-			return buildEmpty().setAccessToken(
-					datastoreCompany.getAccessToken()).setRefreshToken(
-					datastoreCompany.getRefreshToken());
+			return buildEmpty()
+					.setAccessToken(datastoreCompany.getAccessToken())
+					.setRefreshToken(datastoreCompany.getRefreshToken())
+					.setExpirationTimeMilliseconds(datastoreCompany.getExpirationTime());
 		}
 		return null;
 	}
@@ -154,9 +155,9 @@ public class CredentialManager {
 	 */
 	public String getAuthorizationUrl() {
 		GoogleAuthorizationCodeRequestUrl urlBuilder = new GoogleAuthorizationCodeRequestUrl(
-				clientSecrets.getWeb().getClientId(), clientSecrets.getWeb()
-						.getRedirectUris().get(0), SCOPES).setAccessType(
-				"offline").setApprovalPrompt("force");
+				clientSecrets.getWeb().getClientId(),
+				clientSecrets.getWeb().getRedirectUris().get(0), SCOPES)
+		.setAccessType("offline").setApprovalPrompt("force");
 		return urlBuilder.build();
 	}
 
