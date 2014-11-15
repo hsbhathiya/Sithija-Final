@@ -1,12 +1,19 @@
 package org.sithija.google.drive.datastore.domain;
 
+import java.io.Serializable;
+
 import com.googlecode.objectify.annotation.Cache;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 
 @Cache
 @Entity
-public class Profile {
+public class Profile implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7294123939099061604L;
 	@Id
 	private String profileId;
 	private String emailAddress;

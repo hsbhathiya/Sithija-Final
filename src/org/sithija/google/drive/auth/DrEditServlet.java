@@ -204,51 +204,54 @@ public abstract class DrEditServlet extends HttpServlet {
 	 * @throws IOException
 	 */
 	protected void handleCallbackIfRequired(HttpServletRequest req,
-			HttpServletResponse resp) throws IOException {
+			HttpServletResponse resp) throws IOException  {
 		String code = req.getParameter("code");
 		if (code != null) {
 			// retrieve new credentials with code
 			Credential credential = credentialManager.retrieve(code);
-			// request userinfo
 			Oauth2 service = getOauth2Service(credential);
+			Userinfoplus about;
 			try {
-				Userinfoplus about = service.userinfo().get().execute();
-				String email = about.getEmail();
-				
-				Company abc = new Company("ABC");// CompanyApi.getComapany("ABC");
-				Company xyz = new Company("XYZ");
-				req.getSession().setAttribute("company", abc);
-				credentialManager.save(abc, credential.getAccessToken(),
-						credential.getRefreshToken());
-				credentialManager.save(xyz, credential.getAccessToken(),
-						credential.getRefreshToken());
-				resp.sendRedirect("/");
-				/*
-				 * req.getSession() .setAttribute(KEY_SESSION_USERID,
-				 * about.getId());
-				 */
-				// req.getSession().setAttribute("company",new Company("ABC"));
+				about = service.userinfo().get().execute();
+				Company company = (Company) req.getSession().getAttribute(
+						"newCompany");
+				Profile adminProfile = (Profile) req.getSession().getAttribute(
+						"adminProfile");
+				if (credential != null && company != null && adminProfile != null) {
+					if(adminProfile.getEmail().equals(about.getEmail())){
+						credentialManager.save(company, credential.getAccessToken(),
+								credential.getRefreshToken());
+						ProfileApi.saveProfile(adminProfile);
+					}
 
-				// List<Profile> profiles =
-				// ProfileApi.getProfilesByEmail(email);//User should be
-				// prompted to select
-				// if(!profiles.isEmpty()){
-				// Profile profile = ProfileApi.getProfile(email, "WSO2");
-				/*
-				 * if (profile != null) {
-				 * req.getSession().setAttribute("profileId",
-				 * profile.getProfileId()); }
-				 */
-
-				// req.getSession().setAttribute("company", company);
-				// }
+				}				
 			} catch (IOException e) {
-				throw new RuntimeException("Can't handle the OAuth2 callback, "
-						+ "make sure that code is valid.");
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 
-		}
 
+			resp.sendRedirect("/");
+
+			// request userinfo
+			/*
+			 * Oauth2 service = getOauth2Service(credential);
+			 * 
+			 * 
+			 * try { Userinfoplus about = service.userinfo().get().execute();
+			 * String email = about.getEmail();
+			 * 
+			 * Company abc = new Company("ABC");//
+			 * CompanyApi.getComapany("ABC"); Company xyz = new Company("XYZ");
+			 * req.getSession().setAttribute("company", abc);
+			 * credentialManager.save(abc, credential.getAccessToken(),
+			 * credential.getRefreshToken()); credentialManager.save(xyz,
+			 * credential.getAccessToken(), credential.getRefreshToken());
+			 * resp.sendRedirect("/"); } catch (IOException e) { throw new
+			 * RuntimeException("Can't handle the OAuth2 callback, " +
+			 * "make sure that code is valid."); }
+			 */
+		}
 	}
 
 	/**
