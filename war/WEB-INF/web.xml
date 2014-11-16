@@ -64,6 +64,15 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>AboutServlet</servlet-name>
 		<url-pattern>/about</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>CreateDoc</servlet-name>
+		<servlet-class>org.sithija.google.drive.user.operations.CreateDocServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CreateDoc</servlet-name>
+		<url-pattern>/create</url-pattern>
+	</servlet-mapping>
 	<servlet>
 		<servlet-name>SystemServiceServlet</servlet-name>
 		<servlet-class>com.google.api.server.spi.SystemServiceServlet</servlet-class>

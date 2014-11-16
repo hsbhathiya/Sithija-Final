@@ -15,26 +15,25 @@ public class Document {
 	@Id
 	private String id;
 	private String docName;
-	private URL url;
-	private Date timeCreated;
+	private String url;
+	//private Date timeCreated;
 	private Key<Profile> ownerProfile;
 	
-	public Document() {		
+	private Document() {		
 	}
 	
-	public Document(String docName, URL url, Date timeCreated,
-			Key<Profile> user) {
-		this.id = docName +  user;
+	public Document(String id, String docName, String url, Key<Profile> user) {
+		this.id = id;
 		this.docName = docName;
 		this.url = url;
-		this.timeCreated = timeCreated;
+		//this.timeCreated = timeCreated;
 		this.ownerProfile = user;
 	}
 	
-	public URL getUrl() {
+	public String getUrl() {
 		return url;
 	}
-	public void setUrl(URL url) {
+	public void setUrl(String url) {
 		this.url = url;
 	}
 
@@ -48,14 +47,6 @@ public class Document {
 
 	public void setName(String name) {
 		this.docName = name;
-	}
-
-	public Date getTimeCreated() {
-		return timeCreated;
-	}
-
-	public void setTimeCreated(Date timeCreated) {
-		this.timeCreated = timeCreated;
 	}
 
 	public Key<Profile> getOwner() {
