@@ -1,3 +1,5 @@
+<%@ page import="org.sithija.google.drive.datastore.domain.Profile"%>
+<%@ page import="java.util.List"%>
 <%@ include file="../html/header.jsp" %>
 
 <section class="content">
@@ -10,9 +12,9 @@
 			<div class="box-body table-responsive no-padding" style="overflow: hidden;">
 				<table class="table table-hover">
 					<tbody>
-					<% for(Profile acc: getAttribute("accounts")) { %> 
+					<% for(Profile acc: (List<Profile>)session.getAttribute("accounts")) { %> 
 						<tr>
-							<td class="name"><a href="#"><% acc.getCompanyName() %></a></td>
+							<td class="name"><a href="#"><% out.print(acc.getCompanyName()); %></a></td>
 						</tr>
 					<% } %>
 					</tbody>
