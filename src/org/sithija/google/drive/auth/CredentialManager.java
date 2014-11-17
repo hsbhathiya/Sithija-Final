@@ -30,12 +30,6 @@ import com.google.api.client.util.store.DataStoreFactory;
  * Credential manager to get, save, delete user credentials.
  */
 public class CredentialManager {
-
-	static {
-		factory().register(Profile.class);
-		factory().register(Document.class);
-		factory().register(Company.class);
-	}
 	/**
 	 * Client secrets object.
 	 */

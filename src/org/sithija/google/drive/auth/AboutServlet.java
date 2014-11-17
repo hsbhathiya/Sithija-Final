@@ -25,9 +25,7 @@ public class AboutServlet extends DrEditServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
 
-		Company company = (Company) req.getSession().getAttribute("company"); // CompanyApi.getCompany("XYZ");//
-																				// new
-																				// Company("ABC");
+		Company company = (Company) req.getSession().getAttribute("company");
 		// req.getSession().setAttribute("company", company);
 
 		if (company != null) {

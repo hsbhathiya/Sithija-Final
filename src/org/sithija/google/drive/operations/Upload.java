@@ -45,7 +45,6 @@ public class Upload extends HttpServlet{
 			resp.getWriter().println(drive.about().get().execute().getName());
 			resp.getWriter().println(drive.about().get().execute().getSelfLink());
 		} catch (GeneralSecurityException e) {
-			// TODO Auto-generated catch block
 			resp.getWriter().println("####"+ e);
 			e.printStackTrace();
 		}*/	
@@ -69,7 +68,6 @@ public class Upload extends HttpServlet{
 			  	resp.getWriter().println(service.about().get().execute().getName());
 			  		
 		} catch (GeneralSecurityException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

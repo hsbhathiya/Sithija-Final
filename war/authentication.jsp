@@ -21,13 +21,12 @@
         <![endif]-->
     </head>
     <body style ="background: white;">
-
         <div class="form-box" id="login-box">
             <img src = "html/img/company.png">
             <br>
             <br>
             <div style= "align:center;margin-top:20px;margin-bottom:20px;">
-            <a href ="<%= userService.createLoginURL("/") %>">
+            <a href ="<%= userService.createLoginURL("/auth") %>">
             <button class="btn bg-olive btn-block">Sign Me In</button>
             </a>
             </div>
@@ -37,19 +36,14 @@
                 <button class="btn bg-light-blue btn-circle"><i class="fa fa-facebook"></i></button>
                 <button class="btn bg-aqua btn-circle"><i class="fa fa-twitter"></i></button>
                 <button class="btn bg-red btn-circle"><i class="fa fa-google-plus"></i></button>
-
             </div>
             <br><br>
-
-           
         </div>
          <p align="center">
             <span>powered by</span><br>
             <img src = "html/img/logo.png" width = "100px" height = "50px">
             </p>
-
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js" type="text/javascript"></script>
-
     </body>
 </html>

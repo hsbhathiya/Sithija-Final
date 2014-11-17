@@ -19,9 +19,6 @@ public class Document {
 	private Date timeCreated;
 	private Key<Profile> ownerProfile;
 	
-	public Document() {		
-	}
-	
 	public Document(String docName, URL url, Date timeCreated,
 			Key<Profile> user) {
 		this.id = docName +  user;

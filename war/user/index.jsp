@@ -134,7 +134,7 @@
 <script>
 	function clickedButt(inID) {
 		var url = "https://docs.google.com/document/d/1vJzoXngfPCEShCwykvwSYQQdUuYZIr8fH7d0jlZUT3U/edit";
-		window.location = "/user/driveAppView.jsp?url=" + url;
+		window.location = "/user/driveappview.jsp?url=" + url;
 	}
 </script>
 
@@ -295,7 +295,7 @@
 
                             <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Discard</button>
 
-                            <a href="/user/driveAppView.jsp?url=https://docs.google.com/document/d/19vVoApKkRmOkGfzKsentl8OR2Nyxp3iaW1a1V59eVDM/edit" class="btn btn-primary"><i class="fa fa-plus"></i> Create</a>
+                            <a href="/user/driveappview.jsp?url=https://docs.google.com/document/d/19vVoApKkRmOkGfzKsentl8OR2Nyxp3iaW1a1V59eVDM/edit" class="btn btn-primary"><i class="fa fa-plus"></i> Create</a>
                         </div>
 
 
@@ -471,7 +471,7 @@
 					output += "<td><img src='" + file.iconLink + "' /\></td>";
 					output += "<td>";
 
-					output +="<a href='/user/driveAppView.jsp?url=" + file.alternateLink + "' target='_blank'>" + file.title + "</a>"
+					output +="<a href='/user/driveappview.jsp?url=" + file.alternateLink + "' target='_blank'>" + file.title + "</a>"
 					output += "</td>";
 					output += "<td>";
 					output += file.modifiedDate;
