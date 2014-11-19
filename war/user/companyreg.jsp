@@ -44,7 +44,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td colspan="2">Already registered!! <a href="index.jsp">Login Here</a>
+						<td colspan="2">Already registered!! <a href="/admin/adminlogin.jsp">Login Here</a>
 						</td>
 					</tr>
 				</tbody>

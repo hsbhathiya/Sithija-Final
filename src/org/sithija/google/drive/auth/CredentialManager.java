@@ -179,11 +179,9 @@ public class CredentialManager {
 			// return GoogleCredential;
 			return credential;
 		} catch (IOException e) {
-			new RuntimeException(
+			throw new RuntimeException(
 					"An unknown problem occured while retrieving token");
 		}
-		return null;
-
 	}
 
 	/*
