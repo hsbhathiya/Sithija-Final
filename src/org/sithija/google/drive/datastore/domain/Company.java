@@ -25,6 +25,9 @@ public class Company implements Serializable {
 	private Key<Profile> managerProfile; // Generate Admin profile;
 	//private GoogleCredential credential;
 
+	private Company() {
+		// TODO Auto-generated constructor stub
+	}
 	public Company(String companyName) {
 		this.companyName = companyName;
 	}

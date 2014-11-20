@@ -19,9 +19,6 @@ import com.googlecode.objectify.Key;
 
 public class CreateDocServlet extends DrEditServlet {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -5224086727818555608L;
 
 	@Override
@@ -37,10 +34,8 @@ public class CreateDocServlet extends DrEditServlet {
 			String mimeType = req.getParameter("mimeType");
 
 			Drive service = getDriveService(getCredential((Company)req.getSession().getAttribute("company")));
-
-			
+		
 			File newDoc = new File().setMimeType(mimeType).setTitle(docName);
-			//.setUserPermission(permission);
 			
 			File createdFile = service.files().insert(newDoc).execute();
 
@@ -50,7 +45,8 @@ public class CreateDocServlet extends DrEditServlet {
 
 			    newPermission.setValue(currentUser.getEmail());
 			    newPermission.setType("user");
-			    newPermission.setRole("owner");
+			    newPermission.setRole("writrer");
+			    
 				service.permissions().insert(createdFile.getId(), newPermission).execute();
 				Key<Profile> profileKey = Key.create(currentUser);
 				Document document = new Document(createdFile.getId(), docName,
@@ -59,6 +55,5 @@ public class CreateDocServlet extends DrEditServlet {
 			}
 
 		}
-
 	}
 }

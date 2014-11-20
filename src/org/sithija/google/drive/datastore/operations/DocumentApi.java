@@ -24,8 +24,8 @@ public class DocumentApi {
 		ofy().save().entity(Document).now();
 	}
 	
-	public static void deleteDocument(Document Document) {
-		ofy().delete().type(Document.class).id(Document.getId()).now();
+	public static void deleteDocument(String id) {
+		ofy().delete().type(Document.class).id(id).now();
 	}
 
 	public static List<Document> getAllDocuments() {
