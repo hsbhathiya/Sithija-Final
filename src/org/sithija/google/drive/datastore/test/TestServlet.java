@@ -1,8 +1,9 @@
 package org.sithija.google.drive.datastore.test;
 
+import static org.sithija.google.drive.datastore.service.OfyService.factory;
+
 import java.io.IOException;
 import java.net.URL;
-import java.util.Calendar;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,13 +17,9 @@ import org.sithija.google.drive.datastore.operations.DocumentApi;
 import org.sithija.google.drive.datastore.operations.ProfileApi;
 
 import com.googlecode.objectify.Key;
-import static org.sithija.google.drive.datastore.service.OfyService.factory;
 
 public class TestServlet extends HttpServlet {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	static {

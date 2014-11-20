@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.sithija.google.drive.datastore.domain.Company;
 import org.sithija.google.drive.datastore.domain.Profile;
 import org.sithija.google.drive.datastore.operations.CompanyApi;
 import org.sithija.google.drive.datastore.operations.ProfileApi;

@@ -1,12 +1,13 @@
 package org.sithija.google.drive.auth.model;
 
-import com.google.api.services.drive.model.File;
-import com.google.api.services.drive.model.ParentReference;
-import com.google.api.services.drive.model.File.Labels;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import java.io.Reader;
 import java.util.List;
+
+import com.google.api.services.drive.model.File;
+import com.google.api.services.drive.model.File.Labels;
+import com.google.api.services.drive.model.ParentReference;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 /**
  * An object representing a File and its content, for use while interacting with

@@ -11,9 +11,13 @@ import com.googlecode.objectify.Key;
 
 public class ProfileApi {
 
+	public static Profile getProfile(String id) {
+		return ofy().load().type(Profile.class).id(id).now();
+	}
+
 	public static Profile getProfile(String email, String company) {
 		String id = email+ company;
-		return ofy().load().type(Profile.class).id(id).now();
+		return getProfile(id);
 	}
 	
 	public static List<Profile> getProfilesByCompanyName(String companyName) {
@@ -32,7 +36,7 @@ public class ProfileApi {
 			ofy().save().entity(profile).now();
 	}
 
-	public static void updateUser(Profile profile) {
+	public static void updateProfile(Profile profile) {
 		ofy().save().entity(profile).now();
 	}
 
@@ -55,4 +59,17 @@ public class ProfileApi {
 	public static Profile getProfileByKey(final Key<Profile> key) {
 		return ofy().load().now(key);
 	}
+	
+	public static void appendAsJson(Profile profile, StringBuilder output) {
+		output.append("{\"profileId\":\"");
+		output.append(profile.getProfileId().replaceAll("\\\"", "\\\\\""));
+		output.append("\",\"name\":\"");
+		output.append(profile.getName());
+		output.append("\",\"emailAddress\":\"");
+		output.append(profile.getEmail());
+		output.append("\",\"companyName\":\"");
+		output.append(profile.getCompanyName());
+		output.append("\"}");
+	}
+
 }

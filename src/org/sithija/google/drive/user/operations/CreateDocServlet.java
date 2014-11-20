@@ -1,6 +1,7 @@
 package org.sithija.google.drive.user.operations;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,7 +15,6 @@ import org.sithija.google.drive.datastore.operations.DocumentApi;
 import com.google.api.services.drive.Drive;
 import com.google.api.services.drive.model.File;
 import com.google.api.services.drive.model.Permission;
-import com.google.apphosting.client.serviceapp.AuthService.UserPermissions;
 import com.googlecode.objectify.Key;
 
 public class CreateDocServlet extends DrEditServlet {

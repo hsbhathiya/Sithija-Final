@@ -1,12 +1,10 @@
 package org.sithija.google.drive.auth;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.sithija.google.drive.auth.model.State;
-import org.sithija.google.drive.datastore.operations.CompanyApi;
 
 /**
  * Servlet to check that the current user is authorized and to serve the start
