@@ -17,7 +17,9 @@ public class Profile implements Serializable{
 	private String profileId;
 	@Index
 	private String emailAddress;
+	@Index
 	private String name;
+	@Index
 	private String companyName;
 
 	public Profile() {		
@@ -27,7 +29,7 @@ public class Profile implements Serializable{
 		this.profileId = emailAddress+ companyName;
 		this.emailAddress = emailAddress;
 		this.name = name;
-		this.companyName = companyName;		
+		this.companyName = companyName;
 	}
 	
 	public String getEmail() {

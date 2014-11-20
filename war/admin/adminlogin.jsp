@@ -47,19 +47,21 @@
 
 			<!-- lockscreen credentials (contains the form) -->
 			<div class="lockscreen-credentials">
-
-				<div class="input-group">
-					<input type="password" class="form-control" placeholder="password"
-						id="adminPass" value="" />
-					<div class="input-group-btn">
-						<button class="btn btn-flat" onClick="checkAdminLog()">
-							<i class="fa fa-arrow-right text-muted"></i>
-						</button>
+				<form method="post" action="/adminauth">
+					<div class="input-group">
+						<input type="email" class="form-control" placeholder="company email"
+							id="companyEmail" name="email" />
+						<input type="password" class="form-control" placeholder="password"
+							id="adminPass" name="password" />
+						<div class="input-group-btn">
+							<button class="btn btn-flat" onClick="this.parent.submit()">
+								<i class="fa fa-arrow-right text-muted"></i>
+							</button>
+						</div>
 					</div>
-				</div>
+				</form>
 			</div>
 			<!-- /.lockscreen credentials -->
-
 		</div>
 		<!-- /.lockscreen-item -->
 
@@ -129,15 +131,6 @@
 					+ $(window).scrollLeft())
 					+ "px");
 			return this;
-		}
-	</script>
-	<script>
-		function checkAdminLog() {
-
-			if (document.getElementById("adminPass").value == "pass123") {
-				//alert('test');
-				window.location = "/admin/index.jsp";
-			}
 		}
 	</script>
 </body>
