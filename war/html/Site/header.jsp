@@ -1,3 +1,7 @@
+<%@ page import="com.google.appengine.api.users.UserService"%>
+<%@ page import="com.google.appengine.api.users.UserServiceFactory"%>
+<% UserService userService = UserServiceFactory.getUserService(); %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,22 +10,22 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Sithija | Enterprise Cloud Storage</title>
-    <link href="html/Site/css/bootstrap.min.css" rel="stylesheet">
-    <link href="html/Site/css/font-awesome.min.css" rel="stylesheet">
-    <link href="html/Site/css/prettyPhoto.css" rel="stylesheet">
-    <link href="html/Site/css/price-range.css" rel="stylesheet">
-    <link href="html/Site/css/animate.css" rel="stylesheet">
-	<link href="html/Site/css/main.css" rel="stylesheet">
-	<link href="html/Site/css/responsive.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/prettyPhoto.css" rel="stylesheet">
+    <link href="css/price-range.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+	<link href="css/main.css" rel="stylesheet">
+	<link href="css/responsive.css" rel="stylesheet">
     <!--[if lt IE 9]>
-    <script src="html/Site/js/html5shiv.js"></script>
-    <script src="html/Site/js/respond.min.js"></script>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
     <![endif]-->       
-    <link rel="shortcut icon" href="html/Site/images/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="html/Site/images/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="html/Site/images/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="html/Site/images/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="html/Site/images/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
 </head><!--/head-->
 
 <body>
@@ -30,14 +34,15 @@
 			<div class="container">
 				<div class="row">
                     <div class="logo pull-left">
-                        <a href="html/Site/index.jsp"><img src="html/Site/images/logo.jpg" alt="" height="40px" /></a>
+                        <a href="index.jsp"><img src="images/logo.jpg" alt="" height="40px" /></a>
                     </div>
 		
 
                     <div class="col-sm-10">
                         <div class="shop-menu pull-right">
                             <ul class="nav navbar-nav">
-                                <li><a href="html/Site/login.jsp"><i class="fa fa-lock"></i> Login / Register</a></li>
+                                <li><a href ="<%= userService.createLoginURL("/auth") %>"><i class="fa fa-lock"></i> Login</a></li>
+                                <li><a href="register.jsp"><i class="fa fa-user"></i> Register</a></li>
                             </ul>
                         </div>
                     </div>
@@ -61,21 +66,21 @@
 						</div>
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="html/Site/index.jsp" class="active">Home</a></li>
-								<li class="dropdown"><a href="html/Site/#">About<i class="fa fa-angle-down"></i></a>
+								<li><a href="index.jsp" class="active">Home</a></li>
+								<li class="dropdown"><a href="#">About<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-                                        <li><a href="html/Site/shop.jsp">Sithija</a></li>
-										<li><a href="html/Site/product-details.jsp">Our Vision</a></li>
-										<li><a href="html/Site/checkout.jsp">Team</a></li>
+                                        <li><a href="sithija.jsp">Sithija</a></li>
+										<li><a href="company.jsp">Our Vision</a></li>
+										<li><a href="team.jsp">Team</a></li>
                                     </ul>
                                 </li> 
-								<li class="dropdown"><a href="html/Site/#">Packages<i class="fa fa-angle-down"></i></a>
+								<li class="dropdown"><a href="#">Packages<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-                                        <li><a href="html/Site/blog.jsp">Free Version</a></li>
-										<li><a href="html/Site/blog-single.jsp">Cooperate</a></li>
+                                        <li><a href="trial.jsp">Free Version</a></li>
+										<li><a href="packages.jsp">Cooperate</a></li>
                                     </ul>
                                 </li>
-								<li><a href="html/Site/contact-us.jsp">Contact Us</a></li>
+								<li><a href="contact-us.jsp">Contact Us</a></li>
 							</ul>
 						</div>
 					</div>
