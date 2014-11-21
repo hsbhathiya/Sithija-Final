@@ -13,6 +13,8 @@
 							class="active"></li>
 						<li data-target="#slider-carousel" data-slide-to="1"></li>
 						<li data-target="#slider-carousel" data-slide-to="2"></li>
+						<li data-target="#slider-carousel" data-slide-to="3"></li>
+						<li data-target="#slider-carousel" data-slide-to="4"></li>
 					</ol>
 
 					<div class="carousel-inner">
@@ -137,20 +139,19 @@
 						<div class="product-image-wrapper">
 							<div class="single-products">
 								<div class="productinfo text-center">
-									<img src="images/home/bronze-package.png" alt="" />
-									<h3 style="margin-bottom: -10px">Price</h3>
-									<h1 style="color: #0096d6">$29</h1>
+									<img src="images/home/bronze-package.png" alt="" /> <br>
+									<br>
+									<h4>5 Users</h4>
+									<h4>15 GB Storage</h4>
+
+
+									<h3 style="margin-bottom: -10px">
+										Price: <span style="color: #0096d6"> $29</span>
+									</h3>
+									<br>
+									<br> <a href="purchase.jsp" class="btn btn-default add-to-cart"><i
+										class="fa fa-shopping-cart"></i>Purchase</a>
 								</div>
-
-
-							</div>
-							<div class="choose">
-								<ul class="nav nav-pills nav-justified">
-									<li><a href="#" class="btn btn-default add-to-cart"><i
-											class="fa fa-plus-square"></i>Details</a></li>
-									<li><a href="#" class="btn btn-default add-to-cart"><i
-											class="fa fa-shopping-cart"></i>Add to cart</a></li>
-								</ul>
 							</div>
 						</div>
 					</div>
@@ -160,20 +161,19 @@
 						<div class="product-image-wrapper">
 							<div class="single-products">
 								<div class="productinfo text-center">
-									<img src="images/home/silver-package.png" alt="" />
-									<h3 style="margin-bottom: -10px">Price</h3>
-									<h1 style="color: #0096d6">$99</h1>
+									<img src="images/home/silver-package.png" alt="" /> <br>
+									<br>
+									<h4>15 Users</h4>
+									<h4>100 GB Storage</h4>
+
+
+									<h3 style="margin-bottom: -10px">
+										Price: <span style="color: #0096d6"> $99</span>
+									</h3>
+									<br>
+									<br> <a href="purchase.jsp" class="btn btn-default add-to-cart"><i
+										class="fa fa-shopping-cart"></i>Purchase</a>
 								</div>
-
-
-							</div>
-							<div class="choose">
-								<ul class="nav nav-pills nav-justified">
-									<li><a href="#" class="btn btn-default add-to-cart"><i
-											class="fa fa-plus-square"></i>Details</a></li>
-									<li><a href="#" class="btn btn-default add-to-cart"><i
-											class="fa fa-shopping-cart"></i>Add to cart</a></li>
-								</ul>
 							</div>
 						</div>
 					</div>
@@ -182,20 +182,19 @@
 						<div class="product-image-wrapper">
 							<div class="single-products">
 								<div class="productinfo text-center">
-									<img src="images/home/gold-package.png" alt="" />
-									<h3 style="margin-bottom: -10px">Price</h3>
-									<h1 style="color: #0096d6">$249</h1>
+									<img src="images/home/gold-package.png" alt="" /> <br>
+									<br>
+									<h4>75 Users</h4>
+									<h4>1 TB Storage</h4>
 
+
+									<h3 style="margin-bottom: -10px">
+										Price: <span style="color: #0096d6"> $29</span>
+									</h3>
+									<br>
+									<br> <a href="purchase.jsp" class="btn btn-default add-to-cart"><i
+										class="fa fa-shopping-cart"></i>Purchase</a>
 								</div>
-
-							</div>
-							<div class="choose">
-								<ul class="nav nav-pills nav-justified">
-									<li><a href="#" class="btn btn-default add-to-cart"><i
-											class="fa fa-plus-square"></i>Details</a></li>
-									<li><a href="#" class="btn btn-default add-to-cart"><i
-											class="fa fa-shopping-cart"></i>Add to cart</a></li>
-								</ul>
 							</div>
 						</div>
 					</div>

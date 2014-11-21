@@ -214,8 +214,8 @@ public abstract class DrEditServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 
-
-			resp.sendRedirect("/");
+			req.getSession().setAttribute("msg", "Success");
+			resp.sendRedirect("/html/Site/js/success.jsp");
 
 			// request userinfo
 			/*
