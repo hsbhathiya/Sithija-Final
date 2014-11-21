@@ -4,7 +4,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%session.setAttribute("company", new Company("WSO1"));
-session.setAttribute("profile", new Profile("codeheart1991@gmail.com","Fishy","MyCompany"));%>
+session.setAttribute("profile", new Profile("hsbathiya@gmail.com","Bhash90","MyCompany"));%>
 <!DOCTYPE html>
 <html>
     <head>

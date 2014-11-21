@@ -25,9 +25,10 @@ public class Company implements Serializable {
 	private List<Key<Profile>> employee = new ArrayList<Key<Profile>>();
 	@Index
 	private Key<Profile> managerProfile; // Generate Admin profile;
-	//private GoogleCredential credential;
 
-	public Company() {
+	
+	private Company() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public Company(String companyName) {
@@ -116,13 +117,5 @@ public class Company implements Serializable {
 	public Key<Profile> getManagerProfile() {
 		return managerProfile;
 	}
-	
-	/*public void setCredential(GoogleCredential credential) {
-		this.credential = credential;
-	}
-	
-	public GoogleCredential getCredential() {
-		return credential;
-	}*/
 
 }

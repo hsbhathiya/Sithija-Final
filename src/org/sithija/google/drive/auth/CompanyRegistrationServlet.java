@@ -34,12 +34,13 @@ public class CompanyRegistrationServlet extends DrEditServlet {
 		req.getSession().setAttribute("adminProfile", adminProfile);		
 		
 		loginIfRequired(req, resp);
+		resp.sendRedirect("/auth");
 	}
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		handleCallbackIfRequired(req, resp);
-		
+		resp.sendRedirect("/auth");
 	}
 }

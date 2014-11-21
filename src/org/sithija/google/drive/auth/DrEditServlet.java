@@ -213,7 +213,10 @@ public abstract class DrEditServlet extends HttpServlet {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+			req.getSession().setAttribute("msg","Success");
+			resp.sendRedirect("/auth");
 
+<<<<<<< HEAD
 			req.getSession().setAttribute("msg", "Success");
 			resp.sendRedirect("/html/Site/js/success.jsp");
 
@@ -235,6 +238,8 @@ public abstract class DrEditServlet extends HttpServlet {
 			 * RuntimeException("Can't handle the OAuth2 callback, " +
 			 * "make sure that code is valid."); }
 			 */
+=======
+>>>>>>> 3474017a0915d167562d737ed7a10ee40abb3990
 		}
 	}
 

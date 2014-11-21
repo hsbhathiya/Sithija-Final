@@ -13,15 +13,13 @@ public class Document {
 	private String id;
 	private String docName;
 	private String url;
-	//private Date timeCreated;
 	private Key<Profile> ownerProfile;
 
 	public Document(String id, String docName, String url, Key<Profile> user) {
 		this.id = id;
 		this.docName = docName;
 		this.url = url;
-		//this.timeCreated = timeCreated;
-		this.ownerProfile = user;
+		this.ownerProfile = user;		
 	}
 
 	public String getUrl() {
