@@ -216,28 +216,9 @@ public abstract class DrEditServlet extends HttpServlet {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+			req.getSession().setAttribute("msg","Success");
+			resp.sendRedirect("/auth");
 
-
-			resp.sendRedirect("/");
-
-			// request userinfo
-			/*
-			 * Oauth2 service = getOauth2Service(credential);
-			 * 
-			 * 
-			 * try { Userinfoplus about = service.userinfo().get().execute();
-			 * String email = about.getEmail();
-			 * 
-			 * Company abc = new Company("ABC");//
-			 * CompanyApi.getComapany("ABC"); Company xyz = new Company("XYZ");
-			 * req.getSession().setAttribute("company", abc);
-			 * credentialManager.save(abc, credential.getAccessToken(),
-			 * credential.getRefreshToken()); credentialManager.save(xyz,
-			 * credential.getAccessToken(), credential.getRefreshToken());
-			 * resp.sendRedirect("/"); } catch (IOException e) { throw new
-			 * RuntimeException("Can't handle the OAuth2 callback, " +
-			 * "make sure that code is valid."); }
-			 */
 		}
 	}
 

@@ -17,7 +17,7 @@ import com.google.api.services.drive.model.Permission;
 import com.google.apphosting.client.serviceapp.AuthService.UserPermissions;
 import com.googlecode.objectify.Key;
 
-public class DeleteDoc extends DrEditServlet {
+public class DeleteDocServlet extends DrEditServlet {
 
 	private static final long serialVersionUID = -5224086727818555608L;
 

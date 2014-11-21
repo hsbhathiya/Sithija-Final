@@ -11,7 +11,7 @@ import org.sithija.google.drive.datastore.domain.Profile;
 
 import com.googlecode.objectify.Key;
 
-public class CompanyRegistrationServlet extends DrEditServlet {
+public class CompanyRegistrationMailServlet extends DrEditServlet {
 	
 	/**
 	 * 

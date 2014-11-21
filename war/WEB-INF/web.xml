@@ -96,6 +96,15 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>CreateDoc</servlet-name>
 		<url-pattern>/create</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>DeleteDoc</servlet-name>
+		<servlet-class>org.sithija.google.drive.user.operations.DeleteDocServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DeleteDoc</servlet-name>
+		<url-pattern>/delete</url-pattern>
+	</servlet-mapping>
 
 	<servlet>
 		<servlet-name>SystemServiceServlet</servlet-name>

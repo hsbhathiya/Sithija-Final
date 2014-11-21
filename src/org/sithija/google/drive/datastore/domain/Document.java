@@ -1,7 +1,9 @@
 package org.sithija.google.drive.datastore.domain;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import com.googlecode.objectify.Key;
 import com.googlecode.objectify.annotation.Cache;
@@ -16,15 +18,13 @@ public class Document {
 	private String id;
 	private String docName;
 	private String url;
-	//private Date timeCreated;
 	private Key<Profile> ownerProfile;
 
 	public Document(String id, String docName, String url, Key<Profile> user) {
 		this.id = id;
 		this.docName = docName;
 		this.url = url;
-		//this.timeCreated = timeCreated;
-		this.ownerProfile = user;
+		this.ownerProfile = user;		
 	}
 
 	public String getUrl() {
