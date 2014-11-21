@@ -1,8 +1,9 @@
 package org.sithija.google.drive.auth.model;
 
+import java.util.Collection;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import java.util.Collection;
 
 /**
  * An object representing the state parameter passed into this application from

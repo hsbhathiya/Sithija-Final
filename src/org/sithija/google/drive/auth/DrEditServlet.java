@@ -1,28 +1,21 @@
 package org.sithija.google.drive.auth;
 
-import static org.sithija.google.drive.datastore.service.OfyService.factory;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.lang.reflect.InvocationTargetException;
 import java.util.Date;
-import java.util.List;
 
-import javax.management.RuntimeErrorException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.sithija.google.drive.datastore.domain.Company;
-import org.sithija.google.drive.datastore.domain.Document;
 import org.sithija.google.drive.datastore.domain.Profile;
 import org.sithija.google.drive.datastore.operations.CompanyApi;
 import org.sithija.google.drive.datastore.operations.ProfileApi;
 
 import com.google.api.client.auth.oauth2.Credential;
-import com.google.api.client.auth.oauth2.StoredCredential;
 import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
 import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
 import com.google.api.client.googleapis.json.GoogleJsonResponseException;
@@ -30,13 +23,9 @@ import com.google.api.client.http.HttpTransport;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
-import com.google.api.server.spi.response.UnauthorizedException;
 import com.google.api.services.drive.Drive;
 import com.google.api.services.oauth2.Oauth2;
 import com.google.api.services.oauth2.model.Userinfoplus;
-import com.google.appengine.api.users.User;
-import com.google.appengine.api.users.UserService;
-import com.google.appengine.api.users.UserServiceFactory;
 import com.google.gson.Gson;
 
 /**
@@ -45,12 +34,6 @@ import com.google.gson.Gson;
  */
 @SuppressWarnings("serial")
 public abstract class DrEditServlet extends HttpServlet {
-	static {
-		factory().register(Profile.class);
-		factory().register(Document.class);
-		factory().register(Company.class);
-	}
-
 	/**
 	 * Default transportation layer for Google Apis Java client.
 	 */
@@ -186,7 +169,7 @@ public abstract class DrEditServlet extends HttpServlet {
 			    .setClientSecrets(getClientSecrets().get("client_id").toString(), 
 			    		getClientSecrets().get("client_secret").toString())
 			    .setJsonFactory(JSON_FACTORY).setTransport(TRANSPORT).build()
-			    .setRefreshToken("<REFRESH_TOKEN>").setAccessToken("<ACCESS_TOKEN>");
+			    .setRefreshToken(credential.getRefreshToken()).setAccessToken(credential.getAccessToken());
 			} catch (Exception e) {
 				throw new RuntimeException("Can't redirect to auth page");
 			}
@@ -213,20 +196,21 @@ public abstract class DrEditServlet extends HttpServlet {
 			Userinfoplus about;
 			try {
 				about = service.userinfo().get().execute();
-				Company company = (Company) req.getSession().getAttribute(
-						"newCompany");
-				Profile adminProfile = (Profile) req.getSession().getAttribute(
-						"adminProfile");
+				Company company = (Company) req.getSession().getAttribute("newCompany");
+				Profile adminProfile = (Profile) req.getSession().getAttribute("adminProfile");
+				
 				if (credential != null && company != null && adminProfile != null) {
 					if(adminProfile.getEmail().equals(about.getEmail())){
 						credentialManager.save(company, credential.getAccessToken(),
 								credential.getRefreshToken());
 						ProfileApi.saveProfile(adminProfile);
+						CompanyApi.saveCompany(company);
 					}
-
-				}				
+					else {
+						throw new SecurityException("User and company admin profile email mismatch");
+					}
+				}
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 

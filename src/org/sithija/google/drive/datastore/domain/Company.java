@@ -9,14 +9,12 @@ import com.googlecode.objectify.Key;
 import com.googlecode.objectify.annotation.Cache;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
+import com.googlecode.objectify.annotation.Index;
 
 @Cache
 @Entity
 public class Company implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	@Id
 	private String companyName;
@@ -25,12 +23,13 @@ public class Company implements Serializable {
 	private Long expirationTime;
 	private Blob image;//image may be a separate entity 
 	private List<Key<Profile>> employee = new ArrayList<Key<Profile>>();
+	@Index
 	private Key<Profile> managerProfile; // Generate Admin profile;
 	//private GoogleCredential credential;
 
-	protected Company() {
+	public Company() {
 	}
-	
+
 	public Company(String companyName) {
 		this.companyName = companyName;
 	}
