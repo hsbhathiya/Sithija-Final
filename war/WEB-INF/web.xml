@@ -106,6 +106,52 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<url-pattern>/delete</url-pattern>
 	</servlet-mapping>
 
+	<!-- User CRUD -->
+	<servlet>
+		<servlet-name>ListUsers</servlet-name>
+		<servlet-class>org.sithija.google.drive.operations.ListUsersServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ListUsers</servlet-name>
+		<url-pattern>/user/list</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>GetUser</servlet-name>
+		<servlet-class>org.sithija.google.drive.operations.GetUserServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetUser</servlet-name>
+		<url-pattern>/user/get</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>AddUser</servlet-name>
+		<servlet-class>org.sithija.google.drive.operations.AddUserServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddUser</servlet-name>
+		<url-pattern>/user/add</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>UpdateUser</servlet-name>
+		<servlet-class>org.sithija.google.drive.operations.UpdateUserServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UpdateUser</servlet-name>
+		<url-pattern>/user/update</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>DeleteUser</servlet-name>
+		<servlet-class>org.sithija.google.drive.operations.DeleteUserServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DeleteUser</servlet-name>
+		<url-pattern>/user/delete</url-pattern>
+	</servlet-mapping>
+
 	<servlet>
 		<servlet-name>SystemServiceServlet</servlet-name>
 		<servlet-class>com.google.api.server.spi.SystemServiceServlet
@@ -121,7 +167,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	</servlet-mapping>
 
 	<welcome-file-list>
-		<welcome-file>user/companyreg.jsp</welcome-file>
+		<welcome-file>html/Site/index.jsp</welcome-file>
 	</welcome-file-list>
 
 	<filter>

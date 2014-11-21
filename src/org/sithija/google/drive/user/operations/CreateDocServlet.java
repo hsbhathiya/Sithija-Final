@@ -16,7 +16,6 @@ import org.sithija.google.drive.datastore.operations.ProfileApi;
 import com.google.api.services.drive.Drive;
 import com.google.api.services.drive.model.File;
 import com.google.api.services.drive.model.Permission;
-import com.google.apphosting.client.serviceapp.AuthService.UserPermissions;
 import com.googlecode.objectify.Key;
 
 public class CreateDocServlet extends DrEditServlet {

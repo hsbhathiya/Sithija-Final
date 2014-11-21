@@ -6,8 +6,8 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
 import org.sithija.google.drive.datastore.domain.Company;
-import org.sithija.google.drive.datastore.domain.Profile;
 import org.sithija.google.drive.datastore.domain.Document;
+import org.sithija.google.drive.datastore.domain.Profile;
  
 public class StartupListener implements ServletContextListener{
  
