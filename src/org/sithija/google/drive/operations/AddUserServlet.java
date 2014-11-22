@@ -14,7 +14,7 @@ import org.sithija.google.drive.datastore.operations.ProfileApi;
 
 import com.googlecode.objectify.Key;
 
-public class AddCompanyServlet extends DrEditServlet {
+public class AddUserServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 6943628437785623929L;
 

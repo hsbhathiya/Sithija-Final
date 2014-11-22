@@ -11,7 +11,7 @@
 		<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 		<link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 		<!-- Theme style -->
-		<link href="html/css/AdminLTE.css" rel="stylesheet" type="text/css" />
+		<link href="html/Dashboard/css/AdminLTE.css" rel="stylesheet" type="text/css" />
 
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

@@ -21,17 +21,17 @@
 	<!-- Ionicons -->
 	<link href="//code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css" rel="stylesheet" type="text/css" />
 	<!-- Morris chart -->
-	<link href="../html/css/morris/morris.css" rel="stylesheet" type="text/css" />
+	<link href="../html/Dashboard/css/morris/morris.css" rel="stylesheet" type="text/css" />
 	<!-- jvectormap -->
-	<link href="../html/css/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
+	<link href="../html/Dashboard/css/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
 	<!-- Date Picker -->
-	<link href="../html/css/datepicker/datepicker3.css" rel="stylesheet" type="text/css" />
+	<link href="../html/Dashboard/css/datepicker/datepicker3.css" rel="stylesheet" type="text/css" />
 	<!-- Daterange picker -->
-	<link href="../html/css/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
+	<link href="../html/Dashboard/css/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
 	<!-- bootstrap wysihtml5 - text editor -->
-	<link href="../html/css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
+	<link href="../html/Dashboard/css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
 	<!-- Theme style -->
-	<link href="../html/css/AdminLTE.css" rel="stylesheet" type="text/css" />
+	<link href="../html/Dashboard/css/AdminLTE.css" rel="stylesheet" type="text/css" />
 
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

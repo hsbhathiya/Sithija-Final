@@ -19,19 +19,27 @@ public class AdminAuthServlet extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
-
-		String email = (String) req.getSession().getAttribute("email"); 
-
-		Company company;
-		company = CompanyApi.getCompanyByEmail(email);
-		if(company == null) {
-			resp.sendRedirect("/admin/adminlogin.jsp");
-			return;
-		}
+			
+		UserService userService = UserServiceFactory.getUserService();
+		User user = userService.getCurrentUser();
+		if (user != null) {
+			String email = (String) req.getSession().getAttribute("email"); 
+			if(email.equals(user.getEmail())) {
+				Company company;
+				company = CompanyApi.getCompanyByEmail(email);
+				if(company == null) {
+					resp.sendRedirect("/admin/adminlogin.jsp");
+					return;
+				}
 		
-		req.getSession().setAttribute("company", company);
-		req.getSession().setAttribute("admin", ProfileApi.getProfileByKey(company.getManagerProfile()));
-		resp.sendRedirect("/admin/index.jsp");
+				req.getSession().setAttribute("company", company);
+				req.getSession().setAttribute("admin", ProfileApi.getProfileByKey(company.getManagerProfile()));
+				resp.sendRedirect("/admin/index.jsp");
+				return;
+			}
+		}
+		// logout and login
+		resp.sendRedirect(userService.createLogoutURL(userService.createLoginURL("/adminauth")));
 	}
 	
 	/*

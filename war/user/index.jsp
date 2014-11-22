@@ -1,4 +1,4 @@
-<%@ include file="../html/header.jsp" %>
+<%@ include file="../html/Dashboard/header.jsp" %>
 
 	<section class="content">
 		<div class="row">
@@ -127,4 +127,4 @@
 	<script type="text/javascript" src="../html/js/drive-user.js"></script>
 	<script type="text/javascript" src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
 
-<%@ include file="../html/footer.jsp" %>
+<%@ include file="../html/Dashboard/footer.jsp" %>

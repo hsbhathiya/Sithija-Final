@@ -11,17 +11,17 @@
     <meta name="author" content="">
     <title>Sithija | Enterprise Cloud Storage</title>
  
-    <link href="css/bootstrap.min.css" rel="stylesheet">    
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/prettyPhoto.css" rel="stylesheet">
-    <link href="css/price-range.css" rel="stylesheet">
-    <link href="css/animate.css" rel="stylesheet">
-	<link href="css/main.css" rel="stylesheet">
-	<link href="css/responsive.css" rel="stylesheet">
+    <link href="/html/Site/css/bootstrap.min.css" rel="stylesheet">    
+    <link href="/html/Site/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/html/Site/css/prettyPhoto.css" rel="stylesheet">
+    <link href="/html/Site/css/price-range.css" rel="stylesheet">
+    <link href="/html/Site/css/animate.css" rel="stylesheet">
+	<link href="/html/Site/css/main.css" rel="stylesheet">
+	<link href="/html/Site/css/responsive.css" rel="stylesheet">
 	
     <!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.min.js"></script>
+    <script src="/html/Site/js/html5shiv.js"></script>
+    <script src="/html/Site/js/respond.min.js"></script>
     <![endif]-->       
     <link rel="shortcut icon" href="../../favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">

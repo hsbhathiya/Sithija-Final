@@ -16,7 +16,7 @@
 					</div>
 					<!-- /.box-header -->
 					<div class="box-body table-responsive no-padding" style="overflow: hidden;">
-						<button class="btn btn-success pull-right" data-toggle="modal" data-target="#compose-modal" style="margin-top:10px; margin-bottom:10px;margin-right:20px;">Create User</button>
+						<button id="toggleForm" onclick="addUser()" class="btn btn-success pull-right" data-toggle="modal" data-target="#compose-modal" style="margin-top:10px; margin-bottom:10px;margin-right:20px;">Create User</button>
 						<br>
 						<h3 style="margin-left:10px;">List of Users</h3>
 						<br>
@@ -61,24 +61,24 @@
 				<i class="fa fa-user"></i> Create New User
 			</h4>
 				</div>
-				<form action="#" method="post">
+				<form id="editForm" action="#" method="post">
 					<div class="modal-body">
 						<div class="form-group has-success">
 							User Name
 							<br>
 							<br>
-							<input type="text" class="form-control" id="inputSuccess" placeholder="Enter ...">
+							<input type="text" class="form-control" id="username" name="username" placeholder="Enter ...">
 						</div>
 						<div class="form-group has-success">
 							User Email
 							<br>
 							<br>
-							<input type="text" class="form-control" type="email" id="inputSuccess" placeholder="Enter ...">
+							<input type="text" class="form-control" type="email" id="email" name="email" placeholder="Enter ...">
 						</div>
 					</div>
 					<div class="modal-footer clearfix">
 						<button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Discard</button>
-						<a href="/user/driveappview.jsp?url=https://docs.google.com/document/d/1vJzoXngfPCEShCwykvwSYQQdUuYZIr8fH7d0jlZUT3U/edit" class="btn btn-primary"><i class="fa fa-plus"></i> Create</a>
+						<button type="button" id="submitter" class="btn btn-primary" onclick="$targetFunc$">Create</button>
 					</div>
 				</form>
 			</div>
@@ -102,9 +102,9 @@
 		
 		function loadUsers() {
 			var rowTemplate = '<tr><td width="10%"></td><td><img src="<% out.print(""); %>" width="40px" height="40px" class="img-circle" alt="User Image" /></td>'
-				+ '<td class="name"><a href="#">NAME</a></td><td><div class="btn-group"><button type="button" class="btn btn-info" onclick="deleteUser(\"USERID\"")">Delete</button>'
+				+ '<td class="name"><a href="#">NAME</a></td><td><div class="btn-group"><button type="button" class="btn btn-info" onclick="deleteUser(\'USERID\')">Delete</button>'
 				+ '<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>'
-				+ '<ul class="dropdown-menu" role="menu"><li><a href="#">Promote</a></li><li><a href="#" onclick="editUser(\"USERID\"")">Edit</a></li><li><a href="#">Suspend</a></li>'
+				+ '<ul class="dropdown-menu" role="menu"><li><a href="#">Promote</a></li><li><a href="#" onclick="editUser(\'USERID\')">Edit</a></li><li><a href="#">Suspend</a></li>'
 				+ '<li><a href="#">De-Activate</a></li></ul></div></td></tr>';
 			$.ajax({
 				url: "/user/list",
@@ -122,35 +122,75 @@
 		}
 		
 		function deleteUser(profileId) {
-			if(confirm("Are you sure you want to delete this user?")) {
-				url: "/user/delete",
-				data: {
-					profileId: profileId 
-				},
-				success: function(users) {
-					var table = $("#users");
-					table.html("");
-					for(u in users) {
-						table.append(rowTemplate.replace(/NAME/g, users[u].name).replace(/USERID/g, users[u].profileId));
+			console.log("delete");
+			if(profileId == adminId) {
+				alert("You cannot delete the admin!");
+				return false;
+			}
+			
+			if(confirm("Are you sure you want to remove this user from your Sithija company?")) {
+				$.ajax({
+					url: "/user/delete",
+					data: {
+						profileId: profileId 
+					},
+					success: function(users) {
+						alert("User deleted successfully!");
+						loadUsers();
+						setTimeout(function() {
+							loadUsers();
+						}, 10000);
 					}
-				}
+				});
 			}
 		}
 		
-		function deleteUser(profileId) {
-			if(confirm("Are you sure you want to delete this user?")) {
-				url: "/user/delete",
+		function addUser() {
+			console.log("add");
+			$("#username").val("");
+			$("#email").val("");
+			$('#submitter').attr("onclick", "add()");
+		}
+		
+		function add() {
+			$.ajax({
+				url: "/user/add",
 				data: {
-					profileId: profileId 
+					name: $("#username").val(),
+					emailAddress: $("#email").val(),
+					companyName: companyName 
 				},
 				success: function(users) {
-					var table = $("#users");
-					table.html("");
-					for(u in users) {
-						table.append(rowTemplate.replace(/NAME/g, users[u].name).replace(/USERID/g, users[u].profileId));
-					}
+					alert("User added successfully!");
+					loadUsers();
+					setTimeout(function() {
+						loadUsers();
+					}, 10000);
 				}
-			}
+			});
+		}
+		
+		function editUser(profileId) {
+			console.log("edit");
+			$("#username").val("");
+			$("#email").val("");
+			$('#submitter').attr("onclick", "update('" + profileId + "')");
+			$("#toggleForm").click();
+		}
+		
+		function update(profileId) {
+			$.ajax({
+				url: "/user/update",
+				data: {
+					profileId: profileId,
+					name: $("#username").val(),
+					emailAddress: $("#email").val() 
+				},
+				success: function(users) {
+					alert("User edited successfully!");
+					loadUsers();
+				}
+			});
 		}
 	</script>
 
