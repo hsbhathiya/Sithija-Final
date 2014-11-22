@@ -1,7 +1,8 @@
 <%@ page import="org.sithija.google.drive.datastore.domain.Profile"%>
+<%@ page import="org.sithija.google.drive.datastore.domain.Company"%>
 <%@ page import="org.sithija.google.drive.datastore.operations.ProfileApi"%>
 <%@ page import="java.util.List"%>
-<%@ include file="../html/header.jsp" %>
+<%@ include file="../html/Dashboard/header.jsp" %>
 
 	<section class="content">
 		<div class="row">
@@ -19,38 +20,8 @@
 						<br>
 						<h3 style="margin-left:10px;">List of Users</h3>
 						<br>
-						<table class="table table-hover">
+						<table id="users" class="table table-hover">
 							<tbody>
-							<%	List<Profile> employees = ProfileApi.getProfilesByCompanyName(((Profile)session.getAttribute("admin")).getCompanyName());
-								for(Profile profile: employees) { %> 
-								<tr>
-									<td width="10%"></td>
-									<!-- TODO profile image -->
-									<td>
-										<img src="<% out.print(""); %>" width="40x" height="40px" class="img-circle" alt="User Image" />
-									</td>
-
-									<td class="name"><a href="#"><% out.print(profile.getName()); %></a>
-									</td>
-									<td>
-										<div class="btn-group">
-											<button type="button" class="btn btn-info">Delete</button>
-											<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
-												<span class="caret"></span>
-												<span class="sr-only">Toggle Dropdown</span>
-											</button>
-											<ul class="dropdown-menu" role="menu">
-												<li><a href="#">Promote</a>
-												</li>
-												<li><a href="#">Suspend</a>
-												</li>
-												<li><a href="#">De-Activate</a>
-												</li>
-											</ul>
-										</div>
-									</td>
-								</tr>
-							<% } %> 
 							</tbody>
 						</table>
 					</div>
@@ -118,8 +89,68 @@
 	<!-- /.modal -->
 
 	<script>
+		var companyName = "<% out.print(((Company) session.getAttribute("company")).getCompanyName()); %>";
+		var adminId = "<% out.print(((Profile) session.getAttribute("admin")).getProfileId()); %>";
+		
 		function adminLogout() {
 			window.location = "adminlogin.jsp";
+		}
+		
+		window.onload = function() {
+			loadUsers();
+		}
+		
+		function loadUsers() {
+			var rowTemplate = '<tr><td width="10%"></td><td><img src="<% out.print(""); %>" width="40px" height="40px" class="img-circle" alt="User Image" /></td>'
+				+ '<td class="name"><a href="#">NAME</a></td><td><div class="btn-group"><button type="button" class="btn btn-info" onclick="deleteUser(\"USERID\"")">Delete</button>'
+				+ '<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>'
+				+ '<ul class="dropdown-menu" role="menu"><li><a href="#">Promote</a></li><li><a href="#" onclick="editUser(\"USERID\"")">Edit</a></li><li><a href="#">Suspend</a></li>'
+				+ '<li><a href="#">De-Activate</a></li></ul></div></td></tr>';
+			$.ajax({
+				url: "/user/list",
+				data: {
+					companyName: companyName 
+				},
+				success: function(users) {
+					var table = $("#users");
+					table.html("");
+					for(u in users) {
+						table.append(rowTemplate.replace(/NAME/g, users[u].name).replace(/USERID/g, users[u].profileId));
+					}
+				}
+			});
+		}
+		
+		function deleteUser(profileId) {
+			if(confirm("Are you sure you want to delete this user?")) {
+				url: "/user/delete",
+				data: {
+					profileId: profileId 
+				},
+				success: function(users) {
+					var table = $("#users");
+					table.html("");
+					for(u in users) {
+						table.append(rowTemplate.replace(/NAME/g, users[u].name).replace(/USERID/g, users[u].profileId));
+					}
+				}
+			}
+		}
+		
+		function deleteUser(profileId) {
+			if(confirm("Are you sure you want to delete this user?")) {
+				url: "/user/delete",
+				data: {
+					profileId: profileId 
+				},
+				success: function(users) {
+					var table = $("#users");
+					table.html("");
+					for(u in users) {
+						table.append(rowTemplate.replace(/NAME/g, users[u].name).replace(/USERID/g, users[u].profileId));
+					}
+				}
+			}
 		}
 	</script>
 
@@ -128,4 +159,4 @@
 	<script type="text/javascript" src="../html/js/drive-admin.js"></script>-->
 	<script type="text/javascript" src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
 
-<%@ include file="../html/footer.jsp" %>
+<%@ include file="../html/Dashboard/footer.jsp" %>
