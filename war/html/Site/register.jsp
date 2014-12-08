@@ -7,7 +7,7 @@
 				<div class="col-sm-6">
 					<div class="signup-form"><!--sign up form-->
 						<h2>Create your Sithija</h2>
-						<form method="post" action="../../start">
+						<form method="post" action="/start">
 							<input type="text" name="companyName" placeholder="Name" required/>
 							<input type="email" name="email" placeholder="Email Address" required/>
 							<input type="password" placeholder="Password" required/>

@@ -13,7 +13,7 @@
 	href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css" />
 <!-- Theme style -->
-<link href="../html/Dashboard/css/AdminLTE.css" rel="stylesheet" type="text/css" />
+<link href="/html/Dashboard/css/AdminLTE.css" rel="stylesheet" type="text/css" />
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -41,7 +41,7 @@
 		<div class="lockscreen-item">
 			<!-- lockscreen image -->
 			<div class="lockscreen-image">
-				<img src="../html/img/avatar5.png" alt="user image" />
+				<img src="/html/img/avatar5.png" alt="user image" />
 			</div>
 			<!-- /.lockscreen-image -->
 
@@ -66,7 +66,7 @@
 		<!-- /.lockscreen-item -->
 
 		<div class="lockscreen-link">
-			<a href="../authentication.jsp">Or sign in as a different user</a>
+			<a href="/authentication.jsp">Or sign in as a different user</a>
 		</div>
 	</div>
 	<!-- /.center -->

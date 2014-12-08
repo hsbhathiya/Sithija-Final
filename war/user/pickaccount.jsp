@@ -1,6 +1,6 @@
 <%@ page import="org.sithija.google.drive.datastore.domain.Profile"%>
 <%@ page import="java.util.List"%>
-<%@ include file="../html/header.jsp" %>
+<%@ include file="/html/Dashboard/header.jsp" %>
 
 <section class="content">
 	<div class="col-md-4" style="margin-left: 20px;">
@@ -24,4 +24,4 @@
 	</div>
 </section>
 
-<%@ include file="../html/footer.jsp" %>
+<%@ include file="/html/Dashboard/footer.jsp" %>

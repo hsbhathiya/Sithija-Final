@@ -1,4 +1,4 @@
-<%@ include file="../html/header.jsp" %>
+<%@ include file="/html/header.jsp" %>
 
 <div class="row">
 	<%-- <p>
@@ -28,4 +28,4 @@
 </div>
 
 <%@ include file="shareview.jsp" %>
-<%@ include file="../html/footer.jsp" %>
+<%@ include file="/html/footer.jsp" %>

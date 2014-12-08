@@ -21,17 +21,17 @@
 	<!-- Ionicons -->
 	<link href="//code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css" rel="stylesheet" type="text/css" />
 	<!-- Morris chart -->
-	<link href="../html/Dashboard/css/morris/morris.css" rel="stylesheet" type="text/css" />
+	<link href="/html/Dashboard/css/morris/morris.css" rel="stylesheet" type="text/css" />
 	<!-- jvectormap -->
-	<link href="../html/Dashboard/css/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
+	<link href="/html/Dashboard/css/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
 	<!-- Date Picker -->
-	<link href="../html/Dashboard/css/datepicker/datepicker3.css" rel="stylesheet" type="text/css" />
+	<link href="/html/Dashboard/css/datepicker/datepicker3.css" rel="stylesheet" type="text/css" />
 	<!-- Daterange picker -->
-	<link href="../html/Dashboard/css/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
+	<link href="/html/Dashboard/css/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
 	<!-- bootstrap wysihtml5 - text editor -->
-	<link href="../html/Dashboard/css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
+	<link href="/html/Dashboard/css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
 	<!-- Theme style -->
-	<link href="../html/Dashboard/css/AdminLTE.css" rel="stylesheet" type="text/css" />
+	<link href="/html/Dashboard/css/AdminLTE.css" rel="stylesheet" type="text/css" />
 
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -48,9 +48,9 @@
 <body class="skin-blue" onload="setSRC()">
 	<!-- header logo: style can be found in header.less -->
 	<header class="header">
-		<a href="../user/index.jsp" class="logo">
+		<a href="/user/index.jsp" class="logo">
 			<!-- Add the class icon to your logo image or logo icon to add the margining -->
-			<img src="../html/img/logo.png" height="45px" alt="User Image" />
+			<img src="/html/img/logo.png" height="45px" alt="User Image" />
 		</a>
 		<!-- Header Navbar: style can be found in header.less -->
 		<nav class="navbar navbar-static-top" role="navigation">
@@ -70,7 +70,7 @@
 										<!-- start message -->
 										<a href="#">
 											<div class="pull-left">
-												<img src="../html/img/avatar3.png" class="img-circle" alt="User Image" />
+												<img src="/html/img/avatar3.png" class="img-circle" alt="User Image" />
 											</div>
 											<h4>Support Team <small><i class="fa fa-clock-o"></i> 5 mins</small></h4>
 											<p>Why not buy a new awesome theme?</p>
@@ -80,7 +80,7 @@
 									<li>
 										<a href="#">
 											<div class="pull-left">
-												<img src="../html/img/avatar2.png" class="img-circle" alt="user image" />
+												<img src="/html/img/avatar2.png" class="img-circle" alt="user image" />
 											</div>
 											<h4>AdminLTE Design Team <small><i class="fa fa-clock-o"></i>2 hours</small></h4>
 											<p>Why not buy a new awesome theme?</p>
@@ -89,7 +89,7 @@
 									<li>
 										<a href="#">
 											<div class="pull-left">
-												<img src="../html/img/avatar.png" class="img-circle" alt="user image" />
+												<img src="/html/img/avatar.png" class="img-circle" alt="user image" />
 											</div>
 											<h4>Developers <small><i class="fa fa-clock-o"></i>Today</small></h4>
 											<p>Why not buy a new awesome theme?</p>
@@ -98,7 +98,7 @@
 									<li>
 										<a href="#">
 											<div class="pull-left">
-												<img src="../html/img/avatar2.png" class="img-circle" alt="user image" />
+												<img src="/html/img/avatar2.png" class="img-circle" alt="user image" />
 											</div>
 											<h4>Sales Department <small><i class="fa fa-clock-o"></i>Yesterday</small></h4>
 											<p>Why not buy a new awesome theme?</p>
@@ -107,7 +107,7 @@
 									<li>
 										<a href="#">
 											<div class="pull-left">
-												<img src="../html/img/avatar.png" class="img-circle" alt="user image" />
+												<img src="/html/img/avatar.png" class="img-circle" alt="user image" />
 											</div>
 											<h4>Reviewers <small><i class="fa fa-clock-o"></i> 2 days</small></h4>
 											<p>Why not buy a new awesome theme?</p>
@@ -230,7 +230,7 @@
 						<ul class="dropdown-menu">
 							<!-- User image -->
 							<li class="user-header bg-light-blue">
-								<img id='userPhoto' src="../html/img/avatar.png" class="img-circle" alt="User Image" />
+								<img id='userPhoto' src="/html/img/avatar.png" class="img-circle" alt="User Image" />
 								<p>
 									<%=user.getNickname()%>
 										- Web Developer <small>Member since Nov. 2012</small>

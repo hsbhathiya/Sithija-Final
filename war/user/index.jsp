@@ -1,4 +1,4 @@
-<%@ include file="../html/Dashboard/header.jsp" %>
+<%@ include file="/html/Dashboard/header.jsp" %>
 
 	<section class="content">
 		<div class="row">
@@ -123,8 +123,8 @@
 
 	<%@ include file="shareview.jsp" %>
 
-	<script type="text/javascript" src="../html/js/drive-common.js"></script>
-	<script type="text/javascript" src="../html/js/drive-user.js"></script>
+	<script type="text/javascript" src="/html/js/drive-common.js"></script>
+	<script type="text/javascript" src="/html/js/drive-user.js"></script>
 	<script type="text/javascript" src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
 
-<%@ include file="../html/Dashboard/footer.jsp" %>
+<%@ include file="/html/Dashboard/footer.jsp" %>

@@ -2,7 +2,7 @@
 <%@ page import="org.sithija.google.drive.datastore.domain.Company"%>
 <%@ page import="org.sithija.google.drive.datastore.operations.ProfileApi"%>
 <%@ page import="java.util.List"%>
-<%@ include file="../html/Dashboard/header.jsp" %>
+<%@ include file="/html/Dashboard/header.jsp" %>
 
 	<section class="content">
 		<div class="row">
@@ -195,8 +195,8 @@
 	</script>
 
 	<!-- no longer useful (need to access company Drive under a different logic)
-	<script type="text/javascript" src="../html/js/drive-common.js"></script>
-	<script type="text/javascript" src="../html/js/drive-admin.js"></script>-->
+	<script type="text/javascript" src="/html/js/drive-common.js"></script>
+	<script type="text/javascript" src="/html/js/drive-admin.js"></script>-->
 	<script type="text/javascript" src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
 
-<%@ include file="../html/Dashboard/footer.jsp" %>
+<%@ include file="/html/Dashboard/footer.jsp" %>

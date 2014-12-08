@@ -1,4 +1,4 @@
-<%@ include file="../html/header.jsp" %>
+<%@ include file="/html/header.jsp" %>
 
 <section class="content">
 
@@ -25,7 +25,7 @@
 							<tr>
 								<td width="10%"></td>
 								<td>
-									<img src="../html/img/sanka.jpg" width="40x" height="40px" class="img-circle" alt="User Image" />
+									<img src="/html/img/sanka.jpg" width="40x" height="40px" class="img-circle" alt="User Image" />
 								</td>
 
 								<td class="name"><a href="#"> Sanka Rasnayaka</a>
@@ -53,7 +53,7 @@
 							<tr class="unread">
 								<td width="10%"></td>
 								<td>
-									<img src="../html/img/ridwan.jpg" width="40x" height="40px" class="img-circle" alt="User Image" />
+									<img src="/html/img/ridwan.jpg" width="40x" height="40px" class="img-circle" alt="User Image" />
 								</td>
 
 								<td class="name"><a href="#">Ridwan Shariffdeen</a>
@@ -78,7 +78,7 @@
 							<tr class="unread">
 								<td width="10%"></td>
 								<td>
-									<img src="../html/img/tharindu.jpg" width="40x" height="40px" class="img-circle" alt="User Image" />
+									<img src="/html/img/tharindu.jpg" width="40x" height="40px" class="img-circle" alt="User Image" />
 								</td>
 
 								<td class="name"><a href="#">Tharindu Munasinghe</a>
@@ -105,7 +105,7 @@
 							<tr class="unread">
 								<td width="10%"></td>
 								<td>
-									<img src="../html/img/bhathiya.jpg" height="40px" class="img-circle" alt="User Image" />
+									<img src="/html/img/bhathiya.jpg" height="40px" class="img-circle" alt="User Image" />
 								</td>
 
 								<td class="name"><a href="#">Bhathiya Supun</a>
@@ -399,4 +399,4 @@
 </script>
 <script type="text/javascript" src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
 
-<%@ include file="../html/footer.jsp" %>
+<%@ include file="/html/footer.jsp" %>

@@ -8,7 +8,7 @@
 </head>
 
 <body>
-	<form method="post" action="start">
+	<form method="post" action="/start">
 		<center>
 			<table border="1" width="30%" cellpadding="5">
 				<thead>
